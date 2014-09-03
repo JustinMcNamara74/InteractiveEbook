@@ -1,0 +1,17 @@
+----------------------------
+---- Rapid Java Project ----
+--------- Phase 1 ----------
+----------------------------
+1. Format an interactive eBook
+	-list all chapters on the left navigation from:
+	www.cs.armstrong.edu/liang/intro10e using appropriate
+	CSS.
+2. Create user accout
+	- User an access(12245) to create a user account with 
+	username and password
+3. Handle user login
+	- Let the user enter a username and password to login
+	- Create a table User(username(pk), password, lastname, firstname
+	 mi, email, phone)
+
+
