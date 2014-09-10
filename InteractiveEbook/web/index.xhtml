@@ -1,12 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Project Name</title>
+        <meta name="author" content="The Author"></meta>
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body style="padding: 60px;">
+        <ui:insert name="header" >
+            <ui:include src="/template/navbar.xhtml" />
+	</ui:insert>
+        <b:container>
+            <b:jumbotron>
+                <h1>Welcome to WheeReader!</h1>
+                <p> WheeReader is the ultimate learning experience.</p>
+                <p> Interactive textbooks are the way of the future.</p>
+                <p>
+                    <a href="reader.xhtml" class="btn btn-lg btn-info">Start Reading!</a>
+                </p>
+            </b:jumbotron>
+        </b:container>
+
     </h:body>
 </html>
-

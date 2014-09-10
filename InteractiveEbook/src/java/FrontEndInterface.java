@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -12,12 +12,13 @@ import javax.inject.Named;
  * @author Slash
  */
 @Named(value = "frontEndInterface")
-@ViewScoped
+@SessionScoped
 public class FrontEndInterface{
-    private int acode;
-    private String user;
-    private String pword;
-
+    private int accessCode;
+    private String username;
+    private String password;
+    private String confirmedPassword;
+    
     /**
      * Creates a new instance of FrontEndInterface
      */
@@ -31,54 +32,70 @@ public class FrontEndInterface{
     //returned a boolean
     public void register(){
         //the method in register returns a boolean indicating success
-        Register.register(acode, user, pword);
+        Register.register(accessCode, username, password);
     }
     
     public void login(){
         //the method in login returns a boolean indicating success
-        Login.login(user, pword);
+        Login.login(username, password);
     }
 
     /**
-     * @return the acode
+     * @return the accessCode
      */
-    public int getAcode() {
-        return acode;
+    public int getAccessCode() {
+        return accessCode;
     }
 
     /**
-     * @param acode the acode to set
+     * @param accessCode the accessCode to set
      */
-    public void setAcode(int acode) {
-        this.acode = acode;
+    public void setAccessCode(int accessCode) {
+        this.accessCode = accessCode;
     }
 
     /**
-     * @return the user
+     * @return the username
      */
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param user the user to set
+     * @param username the username to set
      */
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
-     * @return the pword
+     * @return the password
      */
-    public String getPword() {
-        return pword;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * @param pword the pword to set
+     * @param password the password to set
      */
-    public void setPword(String pword) {
-        this.pword = pword;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    /**
+     * @return the confirmedPassword
+     */
+    public String getConfirmedPassword() {
+        return confirmedPassword;
+    }
+
+    /**
+     * @param confirmedPassword the confirmedPassword to set
+     */
+    public void setConfirmedPassword(String confirmedPassword) {
+        this.confirmedPassword = confirmedPassword;
+    }
+
+    
     
 }

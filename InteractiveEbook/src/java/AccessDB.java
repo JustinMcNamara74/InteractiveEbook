@@ -19,8 +19,8 @@ public class AccessDB{
         }
         
         try{
-        conn = DriverManager.getConnection("jdbc:mysql://localhost/practice?"
-                    + "user=root&password=killer");
+        conn = DriverManager.getConnection("jdbc:mysql://jayjayjayjay.ddns.net/ebook?"
+                    + "user=jjjj&password=JjJj1234!@#$");
         }
         catch(SQLException se){
             System.err.println("Couldn't connect to database");
