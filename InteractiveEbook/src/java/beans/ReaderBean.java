@@ -72,12 +72,30 @@ public class ReaderBean {
         chapters.add(new Chapter(42, "Red-Black Trees"));
         chapters.add(new Chapter(43, "Testing Using JUnit"));
         
+        Chapter chapter5 = chapters.get(4);
+        
+        chapter5.setSourceUrl("chapters/Chapter05_11E.html");
+        
+        chapter5.addSubsection(1, "Introduction");
+        chapter5.addSubsection(2, "The while Loop");
+        chapter5.addSubsection(3, "The do-while Loop");
+        chapter5.addSubsection(4, "The for Loop");
+        chapter5.addSubsection(5, "Which Loop to Use?");
+        chapter5.addSubsection(6, "Nested Loops");
+        chapter5.addSubsection(7, "Minimizing Numeric Errors");
+        chapter5.addSubsection(8, "Case Studies");
+        chapter5.addSubsection(9, "Keywords break and continue");
+        chapter5.addSubsection(10, "Case Study: Checking Palindromes");
+        chapter5.addSubsection(11, "Case Study: Displaying Prime Numbers");
+        
         return chapters;
     }
     
     public class Chapter {
         private int number;
         private String title;
+        private List<Chapter> subsections = new ArrayList<>();
+        private String sourceUrl;
         
         public Chapter(int number, String title) {
             this.number = number;
@@ -96,6 +114,28 @@ public class ReaderBean {
          */
         public String getTitle() {
             return title;
+        }
+        
+        public List<Chapter> getSubsections() {
+            return subsections;
+        }
+        
+        public void addSubsection(int number, String title) {
+            subsections.add(new Chapter(number, title));
+        }
+
+        /**
+         * @return the sourceUrl
+         */
+        public String getSourceUrl() {
+            return sourceUrl;
+        }
+
+        /**
+         * @param sourceUrl the sourceUrl to set
+         */
+        public void setSourceUrl(String sourceUrl) {
+            this.sourceUrl = sourceUrl;
         }
         
         

@@ -44,10 +44,11 @@ public class UserBean implements Serializable {
     }
 
     
-    public void logout(){
+    public boolean logout(){
         FacesContext.getCurrentInstance().
                 getExternalContext().invalidateSession();
         
+        return true;
     }
     /**
      * @return the userName

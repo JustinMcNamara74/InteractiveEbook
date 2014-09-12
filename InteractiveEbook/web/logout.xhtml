@@ -14,22 +14,10 @@
 	</ui:insert>
         
         <b:container>
-            <b:panel title="Successfully Logged Out">
-                <h:panelGroup rendered="#{!userBean.loggedIn}">
-                    <h:form>
-                        <h:panelGrid columns="2" cellpadding="5" cellspacing="5" width="400" style="margin: 0 auto;" title="Login">    
-                            <b:commandButton value="Login" look="primary" action="#{loginBean.login}" style="margin-top:15px"/>
-                        </h:panelGrid>
-                    </h:form>
-                </h:panelGroup>
-                
-                <h:panelGroup rendered="#{userBean.loggedIn}" style="text-align: center;">
-                    <h2>You are logged in!</h2>
-                </h:panelGroup>
+            <b:panel title="Successfully Logged Out" rendered="#{userBean.logout()}">
+                <h2>You have been logged out!</h2>
                 
             </b:panel>
-            
-            <h:outputText value="#{loginBean.response}" style="color: red;"/>
         </b:container>
     </h:body>
 </html>
