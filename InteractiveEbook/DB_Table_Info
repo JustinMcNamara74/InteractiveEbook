@@ -1,0 +1,35 @@
++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++  DB INFO +++++++++++++++++
+++++++++++++++ By Justin ++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++
+
+================
+== User Table ==
+================
+username PK      
+usernames are unique
+a user can have many access codes
+
+
+=======================
+== AccessCodes Table ==
+=======================
+
+code PK
+codes are unique
+a single code has a single owner
+codes have an active 'A' status or inactive 'I' status
+
+
+=====================
+== UserCodes Table ==
+=====================
+
+(username, code) PK
+combination of username and code create a unique PK
+instances of usercodes can be created with a certain number of 
+uses or are valid within a certain range date, or both
+
+
+
+

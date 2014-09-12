@@ -1,18 +1,26 @@
 
+/*
+ * Author: Jacob
+ * Revised by: Justin
+ */
 public class Register {
 
-    public static boolean register(int code, String username, String password) {
+    public static boolean register(User user) {
         AccessDB db = AccessDB.getInstance();
-        //String st = db.query("select * from accesscode where code = " + code + ";");
-        //if(st.isEmpty()){
-        //  return false;
-        //}
-        //else{
-        //db.Update("delete from accesscode where code = " + code + ";");
-        String s = db.query("select * from users where username = '" + username + "';");
-        if(s.equals("")){
-        s = ShaPWEncryption.encrypt(password);
-        db.update("insert into users values('" + username + "', '" + s + "');");
+        /**
+         * Check if user exists, if not, add user's info to the User table.
+         */
+        String s = db.query("select * from users where username = '" + user.getUserName() + "';");
+        if (s.equals("")) {
+            s = ShaPWEncryption.encrypt(user.getPassword());
+            db.update("insert into user values('" + user.getUserName()
+                    + "', '" + s
+                    + "', '" + user.getFirstName()
+                    + "', '" + user.getLastName()
+                    + "', '" + user.getMiddle()
+                    + "', '" + user.getEmail()
+                    + "');");
+
         }
         //}
         return true;
