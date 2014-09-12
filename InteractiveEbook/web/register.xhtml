@@ -23,6 +23,8 @@
                             <h:inputSecret value="#{userBean.password}" required="true" requiredMessage="Password is required." class="form-control"/>
                             <h:outputText value="Confirm Password:"  style="font-weight: bold;" />
                             <h:inputSecret value="#{userBean.confirmedPassword}" required="true" requiredMessage="Confirmed password is required." class="form-control" style="margin-top:15px; margin-bottom: 15px;"/>
+                            <h:outputText value="Access Code:"  style="font-weight: bold;" />
+                            <b:inputText value="#{userBean.accessCode}" required="true" requiredMessage="Access Code is required." />
                             <h:outputText value="First Name:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.firstName}" required="true" requiredMessage="First name is required."/>
                             <h:outputText value="Middle Initial:"/>

@@ -2,7 +2,6 @@ package data;
 
 import utils.ShaPWEncryption;
 
-
 /**
  * 
  * @author Jacob

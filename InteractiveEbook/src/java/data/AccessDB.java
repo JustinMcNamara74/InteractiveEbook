@@ -56,10 +56,23 @@ public class AccessDB {
             rs.close();
             statement.close();
         } catch (SQLException se) {
-            System.err.println("Error querying database: "+se.getMessage());
+            System.err.println("Error querying database: " + se.getMessage());
         }
         return returnString.toString();
     }
+
+    public boolean isValidCode(int code) {
+        AccessDB db = AccessDB.getInstance();
+        String s = db.query("select code "
+                + "from AccessCodes "
+                + "where code = " + code
+                + ";");
+        
+        System.out.println(s);
+            return !s.equals("");
+
+        }
+
 
     public void update(String st) {
         try {

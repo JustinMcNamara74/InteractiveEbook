@@ -17,6 +17,7 @@
                     <b:navLink value="Login" href="login.xhtml" rendered="#{!userBean.loggedIn}"></b:navLink>
                     
                     <b:navLink value="#{userBean.userName}" href="account.xhtml" rendered="#{userBean.loggedIn}"></b:navLink>
+                    <b:navLink value="Log Out" href="logout.xhtml" rendered="#{userBean.logout()}"></b:navLink>
                 </b:navbarLinks>
             </b:navBar>
         </ui:composition>

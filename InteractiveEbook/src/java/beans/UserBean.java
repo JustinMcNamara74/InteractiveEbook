@@ -9,6 +9,7 @@ package beans;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 
 /**
@@ -27,6 +28,7 @@ public class UserBean implements Serializable {
     
     // Used for registration
     private String confirmedPassword;
+    private int accessCode;
        
     private String firstName;
     private String lastName;
@@ -41,6 +43,12 @@ public class UserBean implements Serializable {
    
     }
 
+    
+    public void logout(){
+        FacesContext.getCurrentInstance().
+                getExternalContext().invalidateSession();
+        
+    }
     /**
      * @return the userName
      */
@@ -165,6 +173,20 @@ public class UserBean implements Serializable {
      */
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    /**
+     * @return the accessCode
+     */
+    public int getAccessCode() {
+        return accessCode;
+    }
+
+    /**
+     * @param accessCode the accessCode to set
+     */
+    public void setAccessCode(int accessCode) {
+        this.accessCode = accessCode;
     }
     
     

@@ -1,5 +1,6 @@
 package beans;
 
+import data.AccessDB;
 import data.Register;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -26,12 +27,20 @@ public class RegisterBean {
 
     public void register() {
         if(userBean.getPassword().equals(userBean.getConfirmedPassword())) {
-            if(Register.register(userBean)) {
-                userBean.setLoggedIn(true);
+            if (AccessDB.getInstance().isValidCode(userBean.getAccessCode())){
+                if(Register.register(userBean)) {
+                    userBean.setLoggedIn(true);
+                }
+                else {
+                    response = "Username is already taken.";
+                }
+                
             }
-            else {
-                response = "Username is already taken.";
+            else{
+                //response = "Invalid AccessCode" + userBean.getAccessCode();
+                response = ""+AccessDB.getInstance().isValidCode(userBean.getAccessCode()); 
             }
+            
         }
         else {
             response = "Passwords do not match!";

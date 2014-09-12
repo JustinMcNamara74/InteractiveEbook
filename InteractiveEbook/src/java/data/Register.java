@@ -1,9 +1,7 @@
 package data;
 
-
 import utils.ShaPWEncryption;
 import beans.UserBean;
-
 
 /*
  * Author: Jacob
@@ -27,7 +25,6 @@ public class Register {
                     + "', '" + user.getEmail()
                     + "', '" + user.getPhone()
                     + "');");
-
         }
         else {
             return false;
