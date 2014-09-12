@@ -14,6 +14,7 @@ import javax.inject.Named;
 @Named(value = "frontEndInterface")
 @SessionScoped
 public class FrontEndInterface{
+    private User user;
     private int accessCode;
     private String username;
     private String password;
@@ -23,6 +24,7 @@ public class FrontEndInterface{
      * Creates a new instance of FrontEndInterface
      */
     public FrontEndInterface() {
+         user = new User();
     }
     
     public void addAccessCode(){
@@ -31,8 +33,9 @@ public class FrontEndInterface{
     //was getting funky navigation error messages when the following two methods
     //returned a boolean
     public void register(){
+        
         //the method in register returns a boolean indicating success
-        Register.register(accessCode, username, password);
+        Register.register(user);
     }
     
     public void login(){
