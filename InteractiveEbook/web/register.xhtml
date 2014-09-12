@@ -7,15 +7,13 @@
     <h:head>
         <title>WheeReader - 4J Interactive</title>
     </h:head>
-    <h:body style="padding-top: 60px;">
+    <h:body style="padding: 60px;">
         <ui:insert name="header" >
             <ui:include src="/template/navbar.xhtml" />
 	</ui:insert>
         
         <b:container>
-            <ui:repeat value="#{readerBean.chapterList}" var="chapter">
-                #{chapter.number} - #{chapter.title}<br/>
-            </ui:repeat>
+            
         </b:container>
     </h:body>
 </html>
