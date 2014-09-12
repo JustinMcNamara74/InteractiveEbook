@@ -13,7 +13,39 @@
 	</ui:insert>
         
         <b:container>
+            <b:panel title="Registration - WheeReader!">
+                <h:panelGroup rendered="#{!userBean.loggedIn}">
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5" cellspacing="5" width="400" style="margin: 0 auto;" title="Login">
+                            <h:outputText value="Desired Username:"  style="font-weight: bold;" />
+                            <b:inputText value="#{userBean.userName}" required="true" requiredMessage="Username is required." />
+                            <h:outputText value="Password:"  style="font-weight: bold;" />
+                            <h:inputSecret value="#{userBean.password}" required="true" requiredMessage="Password is required." class="form-control"/>
+                            <h:outputText value="Confirm Password:"  style="font-weight: bold;" />
+                            <h:inputSecret value="#{userBean.confirmedPassword}" required="true" requiredMessage="Confirmed password is required." class="form-control" style="margin-top:15px; margin-bottom: 15px;"/>
+                            <h:outputText value="First Name:"  style="font-weight: bold;" />
+                            <b:inputText value="#{userBean.firstName}" required="true" requiredMessage="First name is required."/>
+                            <h:outputText value="Middle Initial:"/>
+                            <b:inputText value="#{userBean.middle}" maxlength="1" style="width: 40px"/>
+                            <h:outputText value="Last Name:"  style="font-weight: bold;" />
+                            <b:inputText value="#{userBean.lastName}" required="true" requiredMessage="Last name is required."/>
+                            <h:outputText value="Email Address:"  style="font-weight: bold;" />
+                            <b:inputText value="#{userBean.email}" required="true" requiredMessage="Email address is required."/>
+                            <h:outputText value="Phone Number:" />
+                            <b:inputText value="#{userBean.phone}"/>
+                            <h:outputText value="" />
+                            <b:commandButton value="Register" look="primary" action="#{registerBean.register}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </h:panelGroup>
+                
+                <h:panelGroup rendered="#{userBean.loggedIn}" style="text-align: center;">
+                    <h2>You are registered!</h2>
+                </h:panelGroup>
+                
+            </b:panel>
             
+            <h:outputText value="#{registerBean.response}" style="color: red;"/>
         </b:container>
     </h:body>
 </html>

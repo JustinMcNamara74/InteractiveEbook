@@ -13,8 +13,10 @@
                 </b:navbarLinks>
 
                 <b:navbarLinks pull="right">
-                    <b:navLink value="Register" href="register.xhtml"></b:navLink>
-                    <b:navLink value="Login" href="login.xhtml"></b:navLink>
+                    <b:navLink value="Register" href="register.xhtml" rendered="#{!userBean.loggedIn}"></b:navLink>
+                    <b:navLink value="Login" href="login.xhtml" rendered="#{!userBean.loggedIn}"></b:navLink>
+                    
+                    <b:navLink value="#{userBean.userName}" href="account.xhtml" rendered="#{userBean.loggedIn}"></b:navLink>
                 </b:navbarLinks>
             </b:navBar>
         </ui:composition>

@@ -9,14 +9,14 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
 
 
 /**
  *
  * @author James
  */
-@Named(value = "readerBean")
+@ManagedBean
 @ApplicationScoped
 public class ReaderBean {
 

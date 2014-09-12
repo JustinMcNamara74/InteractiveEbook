@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>WheeReader - 4J Interactive</title>
@@ -12,11 +13,17 @@
             <ui:include src="/template/navbar.xhtml" />
 	</ui:insert>
         
-        <b:container>
-            <ui:repeat value="#{readerBean.chapterList}" var="chapter">
-                #{chapter.number} - #{chapter.title}<br/>
-            </ui:repeat>
-        </b:container>
+        
+        <b:panel look="primary">
+            <f:facet name="heading">Chapters</f:facet>   
+            <b:listLinks>
+                <ui:repeat value="#{readerBean.chapterList}" var="chapter">
+                    <b:navLink href="#" value="#{chapter.number} - #{chapter.title}"/>
+                </ui:repeat>
+                
+            </b:listLinks>
+         </b:panel>
+                
     </h:body>
 </html>
 

@@ -6,27 +6,35 @@ package beans;
  * and open the template in the editor.
  */
 
-import javax.inject.Named;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 
 /**
  *
  * @author McNamara
  */
-@Named(value = "userBean")
+@ManagedBean
 @SessionScoped
-public class UserBean {
+public class UserBean implements Serializable {
 
     /**
      * Creates a new instance of User
      */
     private String userName;
     private String password;
+    
+    // Used for registration
+    private String confirmedPassword;
+       
     private String firstName;
     private String lastName;
     private String middle;
     private String email;
-    private boolean isLoggedIn;
+    private String phone;
+    
+    private boolean loggedIn;
 
      
     public UserBean(){
@@ -53,7 +61,7 @@ public class UserBean {
     public String getPassword() {
         return password;
     }
-
+    
     /**
      * @param password the password to set
      */
@@ -120,15 +128,44 @@ public class UserBean {
     /**
      * @return the isLoggedIn
      */
-    public boolean isIsLoggedIn() {
-        return isLoggedIn;
+    public boolean isLoggedIn() {
+        return loggedIn;
     }
 
     /**
      * @param isLoggedIn the isLoggedIn to set
      */
-    public void setIsLoggedIn(boolean isLoggedIn) {
-        this.isLoggedIn = isLoggedIn;
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
+
+    /**
+     * @return the confirmedPassword
+     */
+    public String getConfirmedPassword() {
+        return confirmedPassword;
+    }
+
+    /**
+     * @param confirmedPassword the confirmedPassword to set
+     */
+    public void setConfirmedPassword(String confirmedPassword) {
+        this.confirmedPassword = confirmedPassword;
+    }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
     
 }

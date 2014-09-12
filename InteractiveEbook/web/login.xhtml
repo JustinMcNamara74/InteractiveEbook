@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>WheeReader - 4J Interactive</title>
@@ -13,7 +14,28 @@
 	</ui:insert>
         
         <b:container>
+            <b:panel title="Time to log into WheeReader!">
+                <h:panelGroup rendered="#{!userBean.loggedIn}">
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5" cellspacing="5" width="400" style="margin: 0 auto;" title="Login">
+                            <h:outputText value="Username:" style="font-weight: bold;"/>
+                            <b:inputText value="#{userBean.userName}" required="true" requiredMessage="Username is required." />
+                            <h:outputText value="Password:" style="font-weight: bold;"/>
+                            <h:inputSecret value="#{userBean.password}" required="true" requiredMessage="Password is required." class="form-control"/>
+
+                            <h:outputText value="" />
+                            <b:commandButton value="Login" look="primary" action="#{loginBean.login}" style="margin-top:15px"/>
+                        </h:panelGrid>
+                    </h:form>
+                </h:panelGroup>
+                
+                <h:panelGroup rendered="#{userBean.loggedIn}" style="text-align: center;">
+                    <h2>You are logged in!</h2>
+                </h:panelGroup>
+                
+            </b:panel>
             
+            <h:outputText value="#{loginBean.response}" style="color: red;"/>
         </b:container>
     </h:body>
 </html>

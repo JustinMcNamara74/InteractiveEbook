@@ -25,8 +25,12 @@ public class Register {
                     + "', '" + user.getLastName()
                     + "', '" + user.getMiddle()
                     + "', '" + user.getEmail()
+                    + "', '" + user.getPhone()
                     + "');");
 
+        }
+        else {
+            return false;
         }
         //}
         return true;
