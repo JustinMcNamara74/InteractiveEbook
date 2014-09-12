@@ -1,3 +1,5 @@
+package data;
+
 public class AddAccessCode{
     public static void add(){
         AccessDB adb = AccessDB.getInstance();

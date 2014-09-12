@@ -1,9 +1,14 @@
+package beans;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import data.Login;
+import data.Register;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
@@ -14,7 +19,9 @@ import javax.inject.Named;
 @Named(value = "frontEndInterface")
 @SessionScoped
 public class FrontEndInterface{
-    private User user;
+    @ManagedProperty(value="#{userBean}")
+    private UserBean user;
+    
     private int accessCode;
     private String username;
     private String password;
@@ -24,12 +31,9 @@ public class FrontEndInterface{
      * Creates a new instance of FrontEndInterface
      */
     public FrontEndInterface() {
-         user = new User();
+
     }
-    
-    public void addAccessCode(){
-        AddAccessCode.add();
-    }
+
     //was getting funky navigation error messages when the following two methods
     //returned a boolean
     public void register(){

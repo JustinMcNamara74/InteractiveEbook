@@ -1,3 +1,9 @@
+package data;
+
+
+import utils.ShaPWEncryption;
+import beans.UserBean;
+
 
 /*
  * Author: Jacob
@@ -5,7 +11,7 @@
  */
 public class Register {
 
-    public static boolean register(User user) {
+    public static boolean register(UserBean user) {
         AccessDB db = AccessDB.getInstance();
         /**
          * Check if user exists, if not, add user's info to the User table.

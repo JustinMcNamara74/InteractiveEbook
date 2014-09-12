@@ -1,3 +1,5 @@
+package beans;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,15 +7,15 @@
  */
 
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author McNamara
  */
 @Named(value = "userBean")
-@Dependent
-public class User {
+@SessionScoped
+public class UserBean {
 
     /**
      * Creates a new instance of User
@@ -27,7 +29,7 @@ public class User {
     private boolean isLoggedIn;
 
      
-    public User(){
+    public UserBean(){
    
     }
 
