@@ -2,19 +2,20 @@ package beans;
 
 import data.AccessDB;
 import data.Register;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author James
  */
-@ManagedBean
+@Named
 @SessionScoped
-public class RegisterBean {
+public class RegisterBean implements Serializable {
 
-    @ManagedProperty(value="#{userBean}")
+    @Inject
     private UserBean userBean;
     
     private String response;

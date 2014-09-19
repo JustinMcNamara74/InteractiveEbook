@@ -7,19 +7,20 @@ package beans;
  */
 
 import data.Login;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ManagedProperty;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author James
  */
-@ManagedBean
+@Named
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
 
-    @ManagedProperty(value="#{userBean}")
+    @Inject
     private UserBean userBean;
     
     private String response;

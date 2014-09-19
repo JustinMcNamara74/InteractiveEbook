@@ -7,16 +7,16 @@ package beans;
  */
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 
 /**
  *
  * @author McNamara
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class UserBean implements Serializable {
 
