@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 7.2 by Y. Daniel Liang</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/GetElementPosition.js"></script>
+
+    <style type = "text/css">
+      body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+      .keyword {color: #000080; font-weight: bold}
+      .comment {color: gray}
+      .literal {font-weight: bold; color: #3366FF}
+    </style>
+
+    <STYLE>
+      #highlight {
+        background-color:green;
+        opacity: 0.25;
+        position:absolute;
+        width:318px;
+        height: 10px;
+        padding: 3px;
+        margin-top:0px;
+        top: 79px;
+        left: 62px;
+      }
+
+      #explanation {
+        color: green;
+        position:absolute;
+        width: 158px;
+        height: 40px;
+        padding: 3px;
+        margin-top:5px;
+        top: 75px;
+        left: 448px;
+        font-size: 90%;
+        font-family: Times New Roman;
+      }
+
+      #commandPrompt {
+        font-family: times;  border: 1px solid gray; text-align: left;  
+        position:absolute;         
+        width: 248.5px;
+        height: 120px;
+        top: 80px;
+        left: 600px;
+        font-size: 80%;
+      }
+
+      #commandPromptHeader {
+        background-color: navy; color: white; font-size: 80%;
+        border-bottom: 2px solid gray; border-right: 2px solid gray;
+      }
+
+      #commandPromptContent {
+        background-color: white;
+        color: black;
+        width: 248px;
+        height: 100px;
+        font-family: courier; 
+        font-size: 80%;
+      }
+    </STYLE>
+
+    <script>
+      function HighLight() {
+        this.width = 318;
+        this.height = 10;
+        this.top = 77;
+        this.left = 62;
+      }
+
+      function Explanation() {
+        this.innerHTML = "";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 75;
+      }
+
+      function CommandPrompt() {
+        this.innerHTML = "";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 65;
+        this.isVisible = true;
+      }
+
+      suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
+      ranks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+
+      function shuffle(deck) {
+        for (var i = 0; i < deck.length; i++) {
+          // Generate an index randomly
+          var index = Math.floor((Math.random() * deck.length));
+          var temp = deck[i];
+          deck[i] = deck[index];
+          deck[index] = temp;
+        }
+      }
+
+      deck = [];
+      function initialize(list) {
+        for (var i = 0; i <= 51; i++) {
+          list[i] = i;
+        }
+      }
+
+      sum = 0;
+      count = 0;
+      number1 = 8;
+      number2 = 7;
+      number2 = 5;
+      number3 = 2;
+      result = true;
+      steps = 11;
+      animationSpeed = 500;
+      slowAnimationSpeed = 3000;
+      lineOffSet = 15;
+      highLight = [];
+      for (var i = 0; i <= steps; i++) {
+        highLight[i] = new HighLight();
+      }
+
+      explanation = [];
+      explanation[0] = new Explanation();
+      explanation[0].innerHTML = "The program starts the execution from the main method.";
+      explanation[0].top = 45;
+      explanation[0].left = 538;
+      explanation[1] = new Explanation();
+      explanation[1].innerHTML = "The statement creates an array of 52 int values.";
+      explanation[1].top = 125;
+      explanation[1].left = 350;
+      explanation[2] = new Explanation();
+      explanation[2].innerHTML = "The statement creates an array of four strings.";
+      explanation[2].top = 125;
+      explanation[2].left = 350;
+      explanation[3] = new Explanation();
+      n = 0
+      explanation[3].innerHTML = "The statement creates an array of thirteen strings.";
+      explanation[3].top = 145;
+      explanation[3].left = 350;
+      explanation[3].width = 430;
+      explanation[4] = new Explanation();
+      explanation[4].innerHTML = "The array is initialized with values 0 to 51.";
+      explanation[4].top = 150;
+      explanation[4].left = 420;
+      explanation[4].width = 160;
+      explanation[5] = new Explanation();
+      explanation[5].innerHTML = "Shuffle deck.";
+      explanation[5].top = 195;
+      explanation[5].left = 285;
+      explanation[5].width = 205;
+      explanation[6] = new Explanation();
+      explanation[6].innerHTML = "The statement displays a message to prompt the user to enter numbers.";
+      explanation[6].top = 317;
+      explanation[6].left = 345;
+      explanation[6].width = 205;
+      explanation[7] = new Explanation();
+      explanation[7].innerHTML = "i is now " + i + " and n is " + n + ". The program tests if i < n.";
+      explanation[7].top = 320;
+      explanation[7].left = 358;
+      explanation[7].width = 205;
+      explanation[8] = new Explanation();
+      explanation[8].innerHTML = "The program receives an input and assign it to numbers[" + i + "].";
+      explanation[8].top = 320;
+      explanation[8].left = 358;
+      explanation[8].width = 205;
+      explanation[9] = new Explanation();
+      explanation[9].innerHTML = "numbers[ " + i + "] is added to sum.";
+      explanation[9].top = 320;
+      explanation[9].left = 348;
+      explanation[9].width = 255;
+      explanation[10] = new Explanation();
+      explanation[10].innerHTML = "The program exits.";
+      explanation[10].top = 428;
+      explanation[10].left = 298;
+      explanation[10].width = 280;
+      explanation[11] = new Explanation();
+      explanation[11].innerHTML = "Initialize count.";
+      explanation[11].top = 248;
+      explanation[11].left = 298;
+      explanation[11].width = 155;
+      explanation[12] = new Explanation();
+      explanation[12].innerHTML = "i is now " + i + " and n is " + n + ". The program tests if i < n.";
+      explanation[12].top = 258;
+      explanation[12].left = 348;
+      explanation[12].width = 250;
+      explanation[13] = new Explanation();
+      explanation[13].top = 258;
+      explanation[13].left = 348;
+      explanation[13].width = 250;
+      explanation[14] = new Explanation();
+      explanation[15] = new Explanation();
+      explanation[16] = new Explanation();
+      explanation[17] = new Explanation();
+      explanation[18] = new Explanation();
+
+      commandPrompt = [];
+      commandPrompt[0] = new CommandPrompt();
+      commandPrompt[0].isVisible = true;
+      commandPrompt[0].innerHTML = "c:\\book>java DeckOfCards";
+      commandPrompt[0].top = 75;
+      commandPrompt[0].left = 690;
+      commandPrompt[0].height = 75;
+      commandPrompt[0].width = 260;
+      commandPrompt[1] = new CommandPrompt();
+      commandPrompt[1].isVisible = false;
+      commandPrompt[2] = new CommandPrompt();
+      commandPrompt[2].isVisible = false;
+      commandPrompt[2].innerHTML = "c:\\book>java DeckOfCards<br>Enter the numbers of items: ";
+      commandPrompt[2].top = 161;
+      commandPrompt[2].left = 640;
+      commandPrompt[3] = new CommandPrompt();
+      commandPrompt[3].isVisible = false;
+      commandPrompt[3].innerHTML = "c:\\book>java DeckOfCards<br>Enter the numbers of items: " + 3;
+      commandPrompt[3].top = 181;
+      commandPrompt[3].left = 640;
+      commandPrompt[4] = new CommandPrompt();
+      commandPrompt[4].isVisible = false;
+      commandPrompt[5] = new CommandPrompt();
+      commandPrompt[5].isVisible = false;
+      commandPrompt[6] = new CommandPrompt();
+      commandPrompt[6].isVisible = false;
+      commandPrompt[6].innerHTML = "";
+      commandPrompt[6].top = 245;
+      commandPrompt[6].left = 640;
+      commandPrompt[7] = new CommandPrompt();
+      commandPrompt[7].isVisible = false;
+      commandPrompt[8] = new CommandPrompt();
+      commandPrompt[8].isVisible = false;
+      commandPrompt[8].innerHTML = "";
+      commandPrompt[8].top = 245;
+      commandPrompt[8].left = 640;
+      commandPrompt[9] = new CommandPrompt();
+      commandPrompt[9].isVisible = true;
+      commandPrompt[9].innerHTML = "c:\\book>java DeckOfCards";
+      commandPrompt[9].top = 355;
+      commandPrompt[9].left = 600;
+      commandPrompt[10] = new CommandPrompt();
+      commandPrompt[10].innerHTML = "c:\\book>java DeckOfCards";
+      commandPrompt[10].isVisible = true;
+      commandPrompt[10].top = 355;
+      commandPrompt[10].left = 600;
+      commandPrompt[11] = new CommandPrompt();
+      commandPrompt[11].isVisible = false;
+      commandPrompt[12] = new CommandPrompt();
+      commandPrompt[12].isVisible = false;
+      commandPrompt[13] = new CommandPrompt();
+      commandPrompt[13].isVisible = false;
+      commandPrompt[14] = new CommandPrompt();
+      commandPrompt[14].isVisible = false;
+      commandPrompt[15] = new CommandPrompt();
+      commandPrompt[15].isVisible = true;
+      commandPrompt[16] = new CommandPrompt();
+      commandPrompt[16].isVisible = true;
+      commandPrompt[17] = new CommandPrompt();
+      commandPrompt[17].isVisible = true;
+      commandPrompt[18] = new CommandPrompt();
+      commandPrompt[18].isVisible = true;
+
+      currentLine = 0;
+      function init() {
+        document.getElementById('highlight').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'hidden';
+        document.getElementById('prevButton').style.visibility = 'hidden';
+        document.getElementById('commandPrompt').style.visibility = 'hidden';
+        document.getElementById('memory').style.visibility = 'hidden';
+        document.getElementById('average').style.visibility = 'hidden';
+        document.getElementById('count').style.visibility = 'hidden';
+        document.getElementById('flyingNumbers').style.visibility = 'hidden';
+        document.getElementById('numbers').style.visibility = 'hidden';
+        document.getElementById('result').style.visibility = 'hidden';
+        document.getElementById('number2').style.visibility = 'hidden';
+        document.getElementById('number3').style.visibility = 'hidden';
+        document.getElementById('flyingValues').style.visibility = 'hidden';
+      }
+
+      function step() {
+        if (currentLine == 0) {
+          document.getElementById('variable').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          document.getElementById('flyingI').style.visibility = 'hidden';
+          document.getElementById('flyingI').innerHTML = '';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          pos = getElementPos(document.getElementById('line0'));
+          explanation[0].top = pos.y;
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 1) {
+          document.getElementById('numbers').style.visibility = 'visible';
+          document.getElementById('number1').style.visibility = 'visible';
+          document.getElementById('number2').style.visibility = 'visible';
+          document.getElementById('number3').style.visibility = 'visible';
+          document.getElementById('value1').innerHTML = "0";
+          document.getElementById('value2').innerHTML = "0";
+          document.getElementById('value3').innerHTML = "0";
+          document.getElementById('value4').innerHTML = "0";
+          document.getElementById('value7').innerHTML = "0";
+          pos = getElementPos(document.getElementById('line1'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h},
+          animationSpeed)
+        }
+        else if (currentLine == 2) {
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('flyingN').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          pos = getElementPos(document.getElementById('line2'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 3) {
+          pos = getElementPos(document.getElementById('line3'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 4) {
+          initialize(deck);
+          document.getElementById('value1').innerHTML = "" + deck[0];
+          document.getElementById('value2').innerHTML = "" + deck[1];
+          document.getElementById('value3').innerHTML = "" + deck[2];
+          document.getElementById('value4').innerHTML = "" + deck[3];
+          document.getElementById('value7').innerHTML = "" + deck[51];
+
+          document.getElementById('flyingValues').style.visibility = 'visible';
+          document.getElementById('value1').innerHTML = "";
+          document.getElementById('value2').innerHTML = "";
+          document.getElementById('value3').innerHTML = "";
+          document.getElementById('value4').innerHTML = "";
+          document.getElementById('value7').innerHTML = "";
+
+          pos = getElementPos(document.getElementById('line4'));
+
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            posLoc4 = getElementPos(document.getElementById('loc1'));
+            $("#flyingValue1").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue1').innerHTML = deck[0];
+            $("#flyingValue1").animate({top: 65, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue2").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue2').innerHTML = deck[1];
+            $("#flyingValue2").animate({top: 85, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue3").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue3').innerHTML = deck[2];
+            $("#flyingValue3").animate({top: 105, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue4").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue4').innerHTML = deck[3];
+            $("#flyingValue4").animate({top: 125, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue7").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue7').innerHTML = deck[51];
+            $("#flyingValue7").animate({top: 185, left: 660}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 5) {
+          shuffle(deck);
+          pos = getElementPos(document.getElementById('line5'));
+
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            posLoc4 = getElementPos(document.getElementById('loc2'));
+            $("#flyingValue1").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue1').innerHTML = deck[0];
+            $("#flyingValue1").animate({top: 65, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue2").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue2').innerHTML = deck[1];
+            $("#flyingValue2").animate({top: 85, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue3").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue3').innerHTML = deck[2];
+            $("#flyingValue3").animate({top: 105, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue4").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue4').innerHTML = deck[3];
+            $("#flyingValue4").animate({top: 125, left: 660}, slowAnimationSpeed);
+
+            $("#flyingValue7").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingValue7').innerHTML = deck[51];
+            $("#flyingValue7").animate({top: 185, left: 660}, slowAnimationSpeed);
+          });
+
+          i = 0;
+        }
+        else if (currentLine == 6) {
+          pos = getElementPos(document.getElementById('line6'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+          if (i < 4) {
+            explanation[6].innerHTML = "i is now " + i + ". The program tests if i < 4. Since " + i + " < 4 is true, the program executes the loop body.";
+          }
+          else {
+            explanation[6].innerHTML = "i is now " + i + ". The program tests if i < 4. Since "
+                    + i + " < 4 is false. This loop ends.";
+            $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+              width: explanation[currentLine].width}, animationSpeed);
+            document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+            currentLine = 9;
+            return;
+          }
+        }
+        else if (currentLine == 7) {
+          index = Math.floor(deck[i] / 13);
+          suit = suits[index];
+          explanation[7].innerHTML = "deck[" + i + "] is " + deck[i] + 
+            ". deck[" + i + "] / 13 is " + index + ". suits[" + index + "] is " +
+                  suits[index] + ".";
+          pos = getElementPos(document.getElementById('line7'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 8) {
+          index = deck[i] % 13;
+          rank = ranks[index];
+          explanation[8].innerHTML = "deck[" + i + "] is " + deck[i] + 
+            ". deck[" + i + "] % 13 is " + index + ". ranks[" + index + "] is " +
+                  ranks[index] + ".";
+
+          pos = getElementPos(document.getElementById('line8'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 9) {
+          explanation[9].innerHTML = "The program display card " + deck[i] + ".";
+          pos = getElementPos(document.getElementById('line9'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+          commandPrompt[9].innerHTML = commandPrompt[9].innerHTML +
+                  "<br />Card number " + deck[i] + ": " + rank + " of " + suit;
+        }
+        else if (currentLine == 10) {
+          pos = getElementPos(document.getElementById('line10'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+          commandPrompt[10].innerHTML = commandPrompt[9].innerHTML +
+                  "<br /><br />c:\\>";
+        }
+
+        if (currentLine == steps) {
+          n = 0;
+          i = 0;
+          count = 0;
+          sum = 0;
+          average = 0;
+          initialize(deck);
+          document.getElementById('flyingValues').style.visibility = 'hidden';
+          document.getElementById('numbers').style.visibility = 'hidden';
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('flyingN').style.visibility = 'hidden';
+          document.getElementById('nextButton').style.visibility = 'hidden';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          document.getElementById('average').style.visibility = 'hidden';
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+          document.getElementById('flyingI').style.visibility = 'hidden';
+          document.getElementById('flyingNumbers').style.visibility = 'hidden';
+          document.getElementById('count').style.visibility = 'hidden';
+          document.getElementById('countBox').style.visibility = 'hidden';
+          document.getElementById('flyingCount').style.visibility = 'hidden';
+          document.getElementById('result').style.visibility = 'hidden';
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+          document.getElementById('number3').style.visibility = 'hidden';
+          document.getElementById('number2').style.visibility = 'hidden';
+          document.getElementById('flyingI').innerHTML = '';
+          document.getElementById('flyingNumber3').innerHTML = '';
+          document.getElementById('flyingNumber2').innerHTML = '';
+          document.getElementById('flyingNumber1').innerHTML = '';
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+          document.getElementById('highlight').style.visibility = 'hidden';
+          document.getElementById('commandPrompt').style.visibility = 'hidden';
+          document.getElementById('explanation').style.visibility = 'hidden';
+          document.getElementById('number1').style.visibility = 'hidden';
+          document.getElementById('flyingReturnValue').style.visibility = 'hidden';
+        }
+        else {
+          $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+            width: explanation[currentLine].width}, animationSpeed);
+          document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+          if (commandPrompt[currentLine].isVisible) {
+            document.getElementById('commandPrompt').style.visibility = 'visible';
+            document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+            $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left},
+            animationSpeed);
+          }
+          else {
+            document.getElementById('commandPrompt').style.visibility = 'hidden';
+          }
+
+          if (currentLine == 9) {
+            i++;
+            currentLine = 5; // Stay in the loop
+          }
+        }
+
+        if (currentLine == 0) {
+          pos = getElementPos(document.getElementById('line0'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 1) {
+          pos = getElementPos(document.getElementById('line1'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 2) {
+          pos = getElementPos(document.getElementById('line2'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 3) {
+          pos = getElementPos(document.getElementById('line3'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 4) {
+          pos = getElementPos(document.getElementById('line4'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 5) {
+          pos = getElementPos(document.getElementById('line5'));
+        }
+        else if (currentLine == 6) {
+          pos = getElementPos(document.getElementById('line6'));
+        }
+        else if (currentLine == 7) {
+          pos = getElementPos(document.getElementById('line7'));
+        }
+        else if (currentLine == 8) {
+          pos = getElementPos(document.getElementById('line8'));
+        }
+        else if (currentLine == 9) {
+          pos = getElementPos(document.getElementById('line9'));
+        }
+        else if (currentLine == 10) {
+          pos = getElementPos(document.getElementById('line10'));
+        }
+      }
+    </script>
+  </head>
+
+  <body onload="init()">   
+    <div style="text-align: left; margin-top: 1em">
+      <span style="padding: 3px">
+        <button id = "nextButton" type="button">></button>
+        <button id = "prevButton" type="button"><</button>
+        <button id ="startButton" type="button">Start Animation</button>  
+        <span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+          Introduction to Java Programming, Tenth Edition,
+          <a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+      </span>    
+    </div>
+
+    <div id="highlight"></div>
+    <div id="explanation"></div>
+    <div id="commandPrompt">
+      <div id="commandPromptHeader">   Command Prompt</div>
+      <div id="commandPromptContent">c:\book>java DeckOfCards</div>
+    </div>
+
+    <div id="memory" style = "background-color: lightyellow;">
+      <div id="variable" style = "font-family: times; text-align: left;  background-color: lightyellow;
+           position:absolute; top: 50px; left: 520px; font-size: 80%;">
+        Variable Name &nbsp;&nbsp;&nbsp;&nbsp;  Value in Memory</div>
+      <div id ="radius">
+        <div id="memory1" style = "font-family: times; text-align: left; font-style: italic;
+             position:absolute; top: 70px; left: 555px; font-size: 80%;">n</div> 
+        <div id="valueK1" style = "font-family: courier; text-align: center; 
+             border: 1px solid green; width: 80px; top: 70px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div> 
+      </div>
+    </div>
+
+    <div id ="numbers">
+      <div id ="number1">
+        <div id="memory3" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 60px; left: 615px; font-size: 80%;">deck[0]</div> 
+        <div id="value1" style = "font-family: courier; text-align: center; color:red; 
+             border: 1px solid green; width: 80px; top: 60px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;">0</div>
+      </div>
+      <div id ="number2">
+        <div id="memory3" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 80px; left: 615px; font-size: 80%;">deck[1]</div> 
+        <div id="value2" style = "font-family: courier; text-align: center;  color:red;
+             border: 1px solid green; width: 80px; top: 80px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;">0</div>
+      </div>
+      <div id ="number3">
+        <div id="memory3" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 100px; left: 615px; font-size: 80%;">deck[2]</div> 
+        <div id="value3" style = "font-family: courier; text-align: center;  color:red;
+             border: 1px solid green; width: 80px; top: 100px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;">0</div>
+      </div>
+      <div id ="number4">
+        <div id="memory4" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 120px; left: 615px; font-size: 80%;">deck[3]</div> 
+        <div id="value4" style = "font-family: courier; text-align: center;  color:red;
+             border: 1px solid green; width: 80px; top: 120px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+      <div id ="number5">
+        <div id="memory4" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 140px; left: 615px; font-size: 80%;">.</div> 
+        <div id="value4" style = "font-family: courier; text-align: center;  
+             border: 1px green; width: 80px; top: 140px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;">.</div>
+      </div>
+      <div id ="number6">
+        <div id="memory4" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 160px; left: 615px; font-size: 80%;">.</div> 
+        <div id="value6" style = "font-family: courier; text-align: center;  
+             border: 1px green; width: 80px; top: 160px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;">.</div>
+      </div>
+      <div id ="number7">
+        <div id="memory4" style = "font-family: times; text-align: left;  font-style: normal;
+             position:absolute; top: 180px; left: 615px; font-size: 80%;">deck[51]</div> 
+        <div id="value7" style = "font-family: courier; text-align: center;  color:red;
+             border: 1px solid green; width: 80px; top: 180px; left: 660px; height: 20px;
+             position:absolute;  font-size: 80%;">0</div>
+      </div>
+    </div>
+
+    <div id ="flyingValues">
+      <div id="flyingValue1" style = "font-family: courier; text-align: center; color:red; 
+           border: 1px green; width: 80px; top: 60px; left: 660px; height: 20px; font-weight: bold;
+           position:absolute;  font-size: 80%;">0</div>
+      <div id="flyingValue2" style = "font-family: courier; text-align: center;  color:red;
+           border: 1px green; width: 80px; top: 80px; left: 660px; height: 20px; font-weight: bold;
+           position:absolute;  font-size: 80%;">0</div>
+      <div id="flyingValue3" style = "font-family: courier; text-align: center;  color:red;
+           border: 1px green; width: 80px; top: 100px; left: 660px; height: 20px; font-weight: bold;
+           position:absolute;  font-size: 80%;">0</div>
+      <div id="flyingValue4" style = "font-family: courier; text-align: center;  color:red;
+           border: 1px green; width: 80px; top: 120px; left: 660px; height: 20px; font-weight: bold;
+           position:absolute;  font-size: 80%;"></div>
+      <div id="flyingValue7" style = "font-family: courier; text-align: center;  color:red;
+           border: 1px green; width: 80px; top: 180px; left: 660px; height: 20px; font-weight: bold;
+           position:absolute;  font-size: 80%;">0</div>
+    </div>
+
+    <div id ="flyingNumbers">
+      <div id="flyingNumber1" style = "font-family: courier; text-align: center; 
+           width: 80px; top: 115px; left: 615px; height: 20px; color:red; font-weight: bold;
+           position:absolute;  font-size: 80%;">0.0</div> 
+
+      <div id="flyingNumber2" style = "font-family: courier; text-align: center; 
+           width: 80px; top: 135px; left: 615px; height: 20px; color:red; font-weight: bold;
+           position:absolute;  font-size: 80%;">0.0</div> 
+
+      <div id="flyingNumber3" style = "font-family: courier; text-align: center; 
+           width: 80px; top: 155px; left: 615px; height: 20px; color:red; font-weight: bold;
+           position:absolute;  font-size: 80%;">0.0</div> 
+    </div>
+    <div id ="result">
+      <div id="memory4" style = "font-family: times; text-align: left;  font-style: italic;
+           position:absolute; top: 200px; left: 555px; font-size: 80%;">sum</div> 
+      <div id="value4" style = "font-family: courier; text-align: center;  
+           border: 1px solid green; width: 80px; top: 200px; left: 615px; height: 20px;
+           position:absolute;  font-size: 80%;"></div>
+    </div>    
+
+    <div id="flyingN" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id ="average">
+      <div id="memory2" style = "font-family: times; text-align: left;  font-style: italic;
+           position:absolute; top: 240px; left: 550px; font-size: 80%;">average</div> 
+      <div id="value2" style = "font-family: courier; text-align: center;  
+           border: 1px solid green; width: 80px; top: 240px; left: 615px; height: 20px;
+           position:absolute;  font-size: 80%;"></div>
+      <div id="flyingAverage" style = "font-family: courier; text-align: center; 
+           width: 180px; top: 245px; left: 100px; height: 20px; color:red; font-weight: bold;
+           position:absolute;  font-size: 80%;"></div> 
+    </div>
+
+    <div id ="count">
+      <div style = "font-family: times; text-align: left;  font-style: italic;
+           position:absolute; top: 280px; left: 550px; font-size: 80%;">count</div> 
+      <div id="countBox" style = "font-family: courier; text-align: center;  
+           border: 1px solid green; width: 80px; top: 280px; left: 615px; height: 20px;
+           position:absolute;  font-size: 80%;"></div>
+      <div id="flyingCount" style = "font-family: courier; text-align: center; 
+           width: 180px; top: 285px; left: 100px; height: 20px; color:red; font-weight: bold;
+           position:absolute;  font-size: 80%;"></div> 
+    </div>
+
+    <div id="flyingI" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingResult" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 95px; left: 615px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingReturnValue" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 95px; left: 615px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id = "program" style="font-family: courier; font-size: 12; margin: 0px auto; border: 1px solid red; text-align: left">
+      <pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DeckOfCards {
+  2&nbsp;&nbsp;  <span id="line0"><span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {</span>
+  3&nbsp;&nbsp;    <span id="line1"><span class = "keyword">int</span>[] <span id="loc0">deck</span> = <span class = "keyword">new</span> <span class = "keyword">int</span>[<span class = "literal">52</span>];</span>
+  4&nbsp;&nbsp;    <span id="line2">String[] suits = {<span class = "literal">"Spades"</span>, <span class = "literal">"Hearts"</span>, <span class = "literal">"Diamonds"</span>, <span class = "literal">"Clubs"</span>};</span>
+  5&nbsp;&nbsp;    <span id="line3">String[] ranks = {<span class = "literal">"Ace"</span>, <span class = "literal">"2"</span>, <span class = "literal">"3"</span>, <span class = "literal">"4"</span>, <span class = "literal">"5"</span>, <span class = "literal">"6"</span>, <span class = "literal">"7"</span>, <span class = "literal">"8"</span>, <span class = "literal">"9"</span>,
+  6&nbsp;&nbsp;      <span class = "literal">"10"</span>, <span class = "literal">"Jack"</span>, <span class = "literal">"Queen"</span>, <span class = "literal">"King"</span>};</span>
+  7&nbsp;&nbsp;        
+  8&nbsp;&nbsp;    <span class = "comment">// Initialize cards</span>
+  9&nbsp;&nbsp;    <span id="line4"><span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; deck.length; i++)
+ 10&nbsp;&nbsp;      <span id="loc1">deck[i]</span> = i;</span>
+ 11&nbsp;&nbsp;    
+ 12&nbsp;&nbsp;    <span class = "comment">// Shuffle the cards</span>
+ 13&nbsp;&nbsp;    <span id="line5"><span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; deck.length; i++) {
+ 14&nbsp;&nbsp;      <span class = "comment">// Generate an index randomly</span>
+ 15&nbsp;&nbsp;      <span class = "keyword">int</span> index = (<span class = "keyword">int</span>)(Math.random() * deck.length);
+ 16&nbsp;&nbsp;      <span class = "keyword">int</span> temp = deck[i];
+ 17&nbsp;&nbsp;      <span id="loc2">deck[i]</span> = deck[index]; 
+ 18&nbsp;&nbsp;      deck[index] = temp;
+ 19&nbsp;&nbsp;    }</span>
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;    <span class = "comment">// Display the first four cards</span>
+ 22&nbsp;&nbsp;    <span id="line6"><span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">4</span>; i++) {</span>
+ 23&nbsp;&nbsp;      <span id="line7">String suit = suits[deck[i] / <span class = "literal">13</span>];</span>
+ 24&nbsp;&nbsp;      <span id="line8">String rank = ranks[deck[i] % <span class = "literal">13</span>];</span>
+ 25&nbsp;&nbsp;      <span id="line9">System.out.println(<span class = "literal">"Card number "</span> + deck[i] + <span class = "literal">": "</span> 
+ 26&nbsp;&nbsp;        + rank + <span class = "literal">" of "</span> + suit);</span>
+ 27&nbsp;&nbsp;    }
+ 28&nbsp;&nbsp;  <span id="line10">}</span>
+ 29&nbsp;&nbsp;}
+      </pre>
+    </div>
+
+    <script type="text/javascript">
+      $("#nextButton").click(function() {
+        currentLine = currentLine + 1;
+        step();
+      });
+      $("#prevButton").click(function() {
+        currentLine = currentLine - 1;
+        step();
+      });
+      $("#startButton").click(function() {
+        currentLine = 0;
+        var pos = getElementPos(document.getElementById('line0'));
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, 'fast');
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, 'fast');
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, 'fast');
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+        document.getElementById('startButton').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'visible';
+        document.getElementById('commandPrompt').style.visibility = 'visible';
+        document.getElementById('highlight').style.visibility = 'visible';
+        document.getElementById('explanation').style.visibility = 'visible';
+      }
+      );
+    </script>
+  </body>
+</html>
