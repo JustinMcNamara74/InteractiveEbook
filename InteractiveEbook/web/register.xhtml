@@ -32,7 +32,7 @@
                             <h:outputText value="Last Name:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.lastName}" required="true" requiredMessage="Last name is required."/>
                             <h:outputText value="Email Address:"  style="font-weight: bold;" />
-                            <b:inputText value="#{userBean.email}" required="true" requiredMessage="Email address is required."/>
+                            <b:inputText value="#{userBean.email}" required="true" requiredMessage="#{registerBean.validate(userBean.email)}"/>
                             <h:outputText value="Phone Number:" />
                             <b:inputText value="#{userBean.phone}"/>
                             <h:outputText value="" />
