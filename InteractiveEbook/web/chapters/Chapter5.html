@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chapter 5</title>
+<style>
+p {
+	line-height: 200%;
+}
+
+.sectionHeading {
+	color: #0D466F;
+	font-size: 24px;
+}
+
+.keyPoint {
+	color: #0D466F;
+	font-style: italic;
+}
+
+.keyTerm {
+	font-style: italic;
+}
+
+.highlightedWord {
+	color: #6092CF;
+	font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+<p align="left"><strong>CHAPTER 5</strong></p>
+<p><strong>LOOPS</strong></p>
+<p> </p>
+<p><strong>Objectives</strong></p>
+<ul>
+  <li>To write programs for executing statements repeatedly using a <strong>while</strong> loop (§5.2).</li>
+  <li>To follow the loop design strategy to develop loops (§§5.2.1–5.2.3).</li>
+  <li>To control a loop with a sentinel value (§5.2.4).</li>
+  <li>To obtain large input from a file using input redirection rather than typing from the keyboard (§5.2.5).</li>
+  <li>To write loops using <strong>do-while</strong> statements (§5.3).</li>
+  <li>To write loops using <strong>for</strong> statements (§5.4).</li>
+  <li>To discover the similarities and differences of three types of loop statements (§5.5).</li>
+  <li>To write nested loops (§5.6).</li>
+  <li>To learn the techniques for minimizing numerical errors (§5.7).</li>
+  <li>To learn loops from a variety of examples (<strong>GCD</strong>, <strong>FutureTuition</strong>, <strong>Dec2Hex</strong>) (§5.8).</li>
+  <li>To implement program control with <strong>break</strong> and <strong>continue</strong> (§5.9).</li>
+  <li>To process characters in a string using a loop in a case study for checking palindrome (§5.10).</li>
+  <li>To write a program that displays prime numbers (§5.11).</li>
+</ul>
+
+<a id="5-1">
+<span class="sectionHeading">5.1 Introduction</span>
+
+<p class="keyPoint">A loop can be used to tell a program to execute statements repeatedly. </p>
+
+<p>Suppose that you need to display a string (e.g., <span class="highlightedWord">Welcome to Java!</span>) a hundred times. It would be tedious to have to write the following statement a hundred times:
+<margin note>
+</p>
+<p>problem
+<img width="352" height="53" src="Chapter5_image001.jpg"></p>
+<p>So, how do you solve this problem?</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Java provides a powerful construct called a
+  <span class="keyTerm">loop</span> that controls how many times an operation or a sequence of operations is performed in succession. Using a loop statement, you simply tell the computer to display a string a hundred times without having to code the print statement a hundred times, as follows:
+  <key term>loop
+  int count = 0;
+  while (count < 100) {
+  System.out.println("Welcome to Java!");
+  count++;
+  }
+  The variable count is initially 0. The loop checks whether count < 100 is true. If so, it executes the loop body to display the message Welcome to Java! and increments count by 1. It repeatedly executes the loop body until count < 100 becomes false. When count < 100 is false (i.e., when count reaches 100), the loop terminates and the next statement after the loop statement is executed.
+  Loops are constructs that control repeated executions of a block of statements. The concept of looping is fundamental to programming. Java provides three types of loop statements: while loops, do-while loops, and for loops.
+</p>
+</body>
+</html>

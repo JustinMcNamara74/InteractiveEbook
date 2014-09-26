@@ -2,22 +2,24 @@ package beans;
 
 import data.AccessDB;
 import data.Register;
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author James
  */
-@ManagedBean
+@Named
 @SessionScoped
-public class RegisterBean {
+public class RegisterBean implements Serializable {
 
-    @ManagedProperty(value="#{userBean}")
+    @Inject
     private UserBean userBean;
+    
     private static final String EMAIL_PATTERN = 
 		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -69,8 +71,9 @@ public class RegisterBean {
             response = "Not a valid Email";
         } else {
             System.out.println(email + " is an invalid email name");
+            response = "Valid Email";
         }
-        response = "Valid Email";
+        
     }
 
     /**
