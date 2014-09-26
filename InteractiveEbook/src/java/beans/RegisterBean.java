@@ -2,21 +2,25 @@ package beans;
 
 import data.AccessDB;
 import data.Register;
-import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author James
  */
-@Named
+@ManagedBean
 @SessionScoped
-public class RegisterBean implements Serializable {
+public class RegisterBean {
 
-    @Inject
+    @ManagedProperty(value="#{userBean}")
     private UserBean userBean;
+    private static final String EMAIL_PATTERN = 
+		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     
     private String response;
     
@@ -48,6 +52,27 @@ public class RegisterBean implements Serializable {
         }
         
     }
+
+
+    public void validate(String email) {
+
+        String enteredEmail = email;
+        //Set the email pattern string
+        Pattern p = Pattern.compile(EMAIL_PATTERN);
+
+        //Match the given string with the pattern
+        Matcher m = p.matcher(enteredEmail);
+
+        //Check whether match is found
+        if (!m.matches()) {
+            System.out.println(email + " validated!");
+            response = "Not a valid Email";
+        } else {
+            System.out.println(email + " is an invalid email name");
+        }
+        response = "Valid Email";
+    }
+
     /**
      * @return the userBean
      */
