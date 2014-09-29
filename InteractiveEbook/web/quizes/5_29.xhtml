@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-29</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.29</em>&nbsp; Analyze the following code:<br/>
+                <br/>import&nbsp;java.util.Scanner;<br/><br/>public&nbsp;class&nbsp;Test&nbsp;{&nbsp;<br/>&nbsp;&nbsp;public static void main(String[] args) {
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;int sum = 0;<br/>&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; 100000; i++) {<br/>&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner input = new Scanner(System.in);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += input.nextInt();<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}<br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-29 a" itemLabel="A. The program does not compile because the Scanner input = new Scanner(System.in); statement is inside the loop."/>
+
+                <f:selectItem itemValue="5-29 b" itemLabel="B. The program compiles, but does not run because the Scanner input = new Scanner(System.in); statement is inside the loop."/> 
+
+                <f:selectItem itemValue="5-29 c" itemLabel="C.  The program compiles and runs, but it is not efficient and unnecessary to execute the Scanner input = new Scanner(System.in);
+                              statement inside the loop. You should move the statement before the loop."/>  
+
+                <f:selectItem itemValue="5-29 d" itemLabel="D.  The program compiles, but does not run because there is not prompting message for entering the input."/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 29" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-29&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-29&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>
+

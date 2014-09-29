@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-26</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.26</em>&nbsp; What is the number of iterations in the following loop?<br/>
+                <br/>&nbsp;&nbsp;for (int i = 1; i &lt; n; i++) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;// iteration<br/>&nbsp;&nbsp;}<br/><br/><br/></div></div> 
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-26 a" itemLabel="A. 2*n"/>
+
+                <f:selectItem itemValue="5-26 b" itemLabel="B. n"/> 
+
+                <f:selectItem itemValue="5-26 c" itemLabel="C. n-1"/>  
+
+                <f:selectItem itemValue="5-26 d" itemLabel="D. n+1"/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 26" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-26&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-26&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

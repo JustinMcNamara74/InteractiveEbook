@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-8</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <span id = "sectiontitle">Section 5.4 The for Loop</span><div id="question"><div id="questionstatement"><em id="questionnumber">5.8</em>&nbsp;	
+                Analyze the following statement:<br/><br/>double&nbsp;sum&nbsp;=&nbsp;0;
+                <br/>for&nbsp;(double&nbsp;d&nbsp;=&nbsp;0;&nbsp;d&nbsp;&lt;&nbsp;10;)&nbsp;{<br/>&nbsp;&nbsp;d += 0.1;<br/>&nbsp;&nbsp;sum += sum + d;<br/>}
+                <br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-8 a" itemLabel="A. The program has a compile error because the adjustment is missing in the for loop."/>
+
+                <f:selectItem itemValue="5-8 b" itemLabel="B. The program has a compile error because the control variable in the for loop cannot be of the double type."/> 
+
+                <f:selectItem itemValue="5-8 c" itemLabel="C. The program runs in an infinite loop because d&lt;10 would always be true."/>  
+
+                <f:selectItem itemValue="5-8 d" itemLabel="D. The program compiles and runs fine."/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 8" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-8&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-8&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

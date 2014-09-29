@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-21</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.21</em>&nbsp;	What is sum after the following loop terminates?<br/>
+                <br/>int&nbsp;sum&nbsp;=&nbsp;0;<br/>int&nbsp;item&nbsp;=&nbsp;0;<br/>do&nbsp;{<br/>&nbsp;&nbsp;item++;<br/>&nbsp;&nbsp;sum += item;<br/>
+                &nbsp;&nbsp;if (sum &gt; 4) break;<br/>}<br/>while&nbsp;(item&nbsp;&lt;&nbsp;5);<br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-21 a" itemLabel="A. 5"/>
+
+                <f:selectItem itemValue="5-21 b" itemLabel="B. 6"/> 
+
+                <f:selectItem itemValue="5-21 c" itemLabel="C. 7"/>  
+
+                <f:selectItem itemValue="5-21 d" itemLabel="D. 8"/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 21" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-21&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-21&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

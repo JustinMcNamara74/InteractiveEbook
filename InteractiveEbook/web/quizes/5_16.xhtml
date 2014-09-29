@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-16</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <span id = "sectiontitle">Section 5.5 Which Loop to Use?</span><div id="question"><div id="questionstatement"><em id="questionnumber">5.16
+                </em>&nbsp;	Analyze the following fragment:<br/><br/>double&nbsp;sum&nbsp;=&nbsp;0;<br/>double&nbsp;d&nbsp;=&nbsp;0;<br/>
+                while&nbsp;(d&nbsp;!=&nbsp;10.0)&nbsp;{<br/>&nbsp;&nbsp;d += 0.1;<br/>&nbsp;&nbsp;sum += sum + d;<br/>}<br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-16 a" itemLabel="A. The program does not compile because sum and d are declared double, but assigned with integer value 0."/>
+
+                <f:selectItem itemValue="5-16 b" itemLabel="B. The program never stops because d is always 0.1 inside the loop."/> 
+
+                <f:selectItem itemValue="5-16 c" itemLabel="C. The program may not stop because of the phenomenon referred to as numerical inaccuracy for operating with floating-point numbers."/>  
+
+                <f:selectItem itemValue="5-16 d" itemLabel="D. After the loop, sum is 0 + 0.1 + 0.2 + 0.3 + ... + 1.9"/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 16" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-16&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-16&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

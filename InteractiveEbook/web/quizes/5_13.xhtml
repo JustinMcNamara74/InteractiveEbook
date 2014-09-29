@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-13</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.13</em>&nbsp;	What is the output for y?<br/><br/>int&nbsp;y&nbsp;=&nbsp;0;
+                <br/>for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&lt;10;&nbsp;++i)&nbsp;{<br/>&nbsp;&nbsp;y += i;<br/>}<br/>System.out.println(y);<br/><br/>
+                <br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-13 a" itemLabel="A. 10"/>
+
+                <f:selectItem itemValue="5-13 b" itemLabel="B. 11"/> 
+
+                <f:selectItem itemValue="5-13 c" itemLabel="C. 12"/>  
+
+                <f:selectItem itemValue="5-13 d" itemLabel="D. 13"/> 
+
+                <f:selectItem itemValue="5-13 e" itemLabel="E. 45"/>
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 13" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-13&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-13&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

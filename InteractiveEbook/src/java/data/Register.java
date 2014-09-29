@@ -32,6 +32,8 @@ public class Register {
         else {
             return false;
         }
+        
+        Populate.populate(user.getUserName());
         //}
         return true;
     }

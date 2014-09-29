@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-10</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.10</em>&nbsp; Which of the following loops correctly computes 1/2 + 2/3 + 
+                3/4 + ... + 99/100?<br/><br/>A:<br/>double&nbsp;sum&nbsp;=&nbsp;0;<br/>for&nbsp;(int&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;99;&nbsp;i++)
+                &nbsp;{<br/>&nbsp;&nbsp;sum = i / (i + 1);<br/>}<br/>System.out.println("Sum&nbsp;is&nbsp;"&nbsp;+&nbsp;sum);<br/><br/>B:
+                <br/>double&nbsp;sum&nbsp;=&nbsp;0;<br/>for&nbsp;(int&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;&nbsp;99;
+                &nbsp;i++)&nbsp;{<br/>&nbsp;&nbsp;sum += i / (i + 1);<br/>}<br/>System.out.println("Sum&nbsp;is&nbsp;
+                "&nbsp;+&nbsp;sum);<br/><br/>C:<br/>double&nbsp;sum&nbsp;=&nbsp;0;<br/>for&nbsp;
+                (int&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;99;&nbsp;i++)&nbsp;{
+                <br/>&nbsp;&nbsp;sum += 1.0 * i / (i + 1);<br/>}<br/>
+                System.out.println("Sum&nbsp;is&nbsp;"&nbsp;+&nbsp;sum);
+                <br/><br/>D:<br/>double&nbsp;sum&nbsp;=&nbsp;0;<br/>for&nbsp;(int&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;=&nbsp;99;&nbsp;i++)&nbsp;{
+                <br/>&nbsp;&nbsp;sum += i / (i + 1.0);<br/>}<br/>System.out.println("Sum&nbsp;is&nbsp;"&nbsp;+&nbsp;sum);<br/><br/>E:
+                <br/>double&nbsp;sum&nbsp;=&nbsp;0;<br/>for&nbsp;(int&nbsp;i&nbsp;=&nbsp;1;&nbsp;i&nbsp;&lt;&nbsp;99;&nbsp;i++)&nbsp;{
+                <br/>&nbsp;&nbsp;sum += i / (i + 1.0);<br/>}<br/>System.out.println("Sum&nbsp;is&nbsp;"&nbsp;+&nbsp;sum);<br/><br/><br/></div></div> 
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-10 a" itemLabel="A.  BCD"/>
+
+                <f:selectItem itemValue="5-10 b" itemLabel="B.  ABCD"/> 
+
+                <f:selectItem itemValue="5-10 c" itemLabel="C.  B"/>  
+
+                <f:selectItem itemValue="5-10 d" itemLabel="D.  CDE"/> 
+
+                <f:selectItem itemValue="5-10 e" itemLabel="E.  CD"/>
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 10" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-10&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-10&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

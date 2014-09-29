@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-7</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.7</em>&nbsp;	
+                What is the value in count after the following loop is executed?<br/><br/>int&nbsp;count&nbsp;=&nbsp;0;<br/>do&nbsp;{
+                <br/>&nbsp;&nbsp;System.out.println("Welcome to Java");<br/>}&nbsp;while&nbsp;(count++&nbsp;&lt;&nbsp;9);
+                <br/>System.out.println(count);<br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-7 a" itemLabel="A. 8"/>
+
+                <f:selectItem itemValue="5-7 b" itemLabel="B. 9"/> 
+
+                <f:selectItem itemValue="5-7 c" itemLabel="C. 10"/>  
+
+                <f:selectItem itemValue="5-7 d" itemLabel="D. 11"/> 
+
+                <f:selectItem itemValue="5-7 e" itemLabel="E. 0"/>
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 7" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-7&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-7&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

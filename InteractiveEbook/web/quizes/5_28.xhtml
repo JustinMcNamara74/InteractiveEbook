@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-28</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.28</em>&nbsp; Suppose the input for number is 9. What is the output from 
+                running the following program?<br/><br/>import&nbsp;java.util.Scanner;<br/><br/>public&nbsp;class&nbsp;Test&nbsp;{<br/>&nbsp;&nbsp;public 
+                static void main(String[] args) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;Scanner input = new Scanner(System.in);<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+                System.out.print("Enter an integer: ");<br/>&nbsp;&nbsp;&nbsp;&nbsp;int number = input.nextInt();<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;int i;<br/>
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;boolean isPrime = true;<br/>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 2; i &lt; number &amp;&amp; isPrime; i++) {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (number % i == 0) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isPrime = false;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("i is " + i);<br/>
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;if (isPrime)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(number + " is prime");<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;else<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(number + " is not prime");<br/>&nbsp;&nbsp;}<br/>}<br/>
+                <br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-28 a" itemLabel="A.  i is 3 followed by 9 is prime"/>
+
+                <f:selectItem itemValue="5-28 b" itemLabel="B.  i is 3 followed by 9 is not prime"/> 
+
+                <f:selectItem itemValue="5-28 c" itemLabel="C.  i is 4 followed by 9 is prime"/>  
+
+                <f:selectItem itemValue="5-28 d" itemLabel="D.  i is 4 followed by 9 is not prime"/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 28" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-28&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-28&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

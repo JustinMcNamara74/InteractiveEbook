@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.2</em>&nbsp; Analyze the following code.<br/>
+                <br/>int&nbsp;count&nbsp;=&nbsp;0;<br/>while&nbsp;(count&nbsp;&lt;&nbsp;100)&nbsp;{<br/>&nbsp;&nbsp;// Point A<br/>
+                &nbsp;&nbsp;System.out.println("Welcome to Java!");<br/>&nbsp;&nbsp;count++;<br/>&nbsp;&nbsp;// Point B<br/>}
+                <br/><br/>&nbsp;&nbsp;// Point C<br/><br/></div></div>
+
+        <h:form>
+            <h:selectManyCheckbox value="#{quizBean.answerList}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-2 a" itemLabel="A.  count &lt; 100 is always true at Point A"/>
+
+                <f:selectItem itemValue="5-2 b" itemLabel="B.  count &lt; 100 is always true at Point B"/> 
+
+                <f:selectItem itemValue="5-2 c" itemLabel="C.  count &lt; 100 is always false at Point B"/>  
+
+                <f:selectItem itemValue="5-2 d" itemLabel="D.  count &lt; 100 is always true at Point C"/> 
+
+                <f:selectItem itemValue="5-2 e" itemLabel="E.  count &lt; 100 is always false at Point C"/>
+
+            </h:selectManyCheckbox>
+            <br/>
+            <h:commandButton value="Submit Question 2" action="#{quizBean.multiSubmit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-2&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-2&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

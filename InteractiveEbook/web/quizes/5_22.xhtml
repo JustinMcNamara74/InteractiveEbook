@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-22</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.22</em>&nbsp;	What is the printout after the following loop terminates?<br/>
+                <br/>int&nbsp;number&nbsp;=&nbsp;25;<br/>int&nbsp;i;<br/><br/>boolean&nbsp;isPrime&nbsp;=&nbsp;true;<br/>
+                for&nbsp;(i&nbsp;=&nbsp;2;&nbsp;i&nbsp;&lt;&nbsp;number&nbsp;&nbsp;&amp;&amp;&nbsp;isPrime;&nbsp;i++)&nbsp;{<br/>&nbsp;&nbsp;if (number % i == 0) {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;isPrime = false;<br/>&nbsp;&nbsp;}<br/>}<br/><br/>System.out.println("i&nbsp;is&nbsp;"&nbsp;+&nbsp;i&nbsp;+&nbsp;"
+                &nbsp;isPrime&nbsp;is&nbsp;"&nbsp;+&nbsp;isPrime);<br/><br/><br/></div></div> 
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-22 a" itemLabel="A.  i is 5 isPrime is true"/>
+
+                <f:selectItem itemValue="5-22 b" itemLabel="B.  i is 5 isPrime is false"/> 
+
+                <f:selectItem itemValue="5-22 c" itemLabel="C.  i is 6 isPrime is true"/>  
+
+                <f:selectItem itemValue="5-22 d" itemLabel="D.  i is 6 isPrime is false"/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 22" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-22&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-22&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>
