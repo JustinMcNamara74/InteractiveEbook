@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import utils.Email;
 
 /**
  *
@@ -45,7 +46,8 @@ public class RegisterBean implements Serializable {
             }
             else{
                 //response = "Invalid AccessCode" + userBean.getAccessCode();
-                response = ""+AccessDB.getInstance().isValidCode(userBean.getAccessCode()); 
+                response = ""+AccessDB.getInstance().isValidCode(userBean.getAccessCode());
+
             }
             
         }

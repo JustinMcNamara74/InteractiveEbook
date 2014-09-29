@@ -51,8 +51,6 @@ public class UserBean implements Serializable {
         return true;
     }
     
-
-    
     
     /**
      * @return the userName

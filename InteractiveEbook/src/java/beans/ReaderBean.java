@@ -74,7 +74,7 @@ public class ReaderBean {
         
         Chapter chapter5 = chapters.get(4);
         
-        chapter5.setSourceUrl("chapters/Chapter05_11E.html");
+        chapter5.setSourceUrl("chapters/Chapter5.html");
         
         chapter5.addSubsection(1, "Introduction");
         chapter5.addSubsection(2, "The while Loop");

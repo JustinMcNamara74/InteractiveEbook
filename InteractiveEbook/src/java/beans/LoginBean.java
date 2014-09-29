@@ -35,6 +35,7 @@ public class LoginBean implements Serializable {
     public void login() {
         if(Login.login(userBean.getUserName(), userBean.getPassword())) {
             userBean.setLoggedIn(true);
+            response = "";
         }
         else {
             response = "Invalid username and/or password :(";
