@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-14</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.14</em>&nbsp;	What is i after the following for loop?<br/>
+                <br/>int&nbsp;y&nbsp;=&nbsp;0;<br/>for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&lt;10;&nbsp;++i)&nbsp;{<br/>&nbsp;&nbsp;y += i;<br/>}
+                <br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-14 a" itemLabel="A.  9"/>
+
+                <f:selectItem itemValue="5-14 b" itemLabel="B.  10"/> 
+
+                <f:selectItem itemValue="5-14 c" itemLabel="C.  11"/>  
+
+                <f:selectItem itemValue="5-14 d" itemLabel="D.  undefined"/>                   
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 14" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-14&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-14&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

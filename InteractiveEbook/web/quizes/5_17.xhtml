@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-17</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <div id="question"><div id="questionstatement"><em id="questionnumber">5.17</em>&nbsp; Analyze the following code:<br/>
+                <br/>public&nbsp;class&nbsp;Test&nbsp;{&nbsp;&nbsp;<br/>&nbsp;&nbsp;public static void main (String args[]) {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;int i = 0;<br/>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 0; i &lt; 10; i++);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                System.out.println(i + 4);<br/>&nbsp;&nbsp;}<br/>}	<br/><br/></div></div>
+
+        <h:form>
+            <h:selectManyCheckbox value="#{quizBean.answerList}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-17 a" itemLabel="A.  The program has a compile error because of the semicolon (;) on the for loop line."/>
+
+                <f:selectItem itemValue="5-17 b" itemLabel="B.  The program compiles despite the semicolon (;) on the for loop line, and displays 4."/> 
+
+                <f:selectItem itemValue="5-17 c" itemLabel="C.  The program compiles despite the semicolon (;) on the for loop line, and displays 14."/>  
+
+                <f:selectItem itemValue="5-17 d" itemLabel="D.  The for loop in this program is same as for (i = 0; i &lt; 10; i++) { }; System.out.println(i + 4);"/>
+
+            </h:selectManyCheckbox>
+            <br/>
+            <h:commandButton value="Submit Question 17" action="#{quizBean.multiSubmit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-17&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-17&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

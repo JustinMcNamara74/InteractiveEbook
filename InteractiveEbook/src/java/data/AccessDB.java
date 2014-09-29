@@ -19,8 +19,8 @@ public class AccessDB {
         }
 
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://jayjayjayjay.ddns.net/ebook?"
-                    + "user=jjjj&password=JjJj1234!@#$");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/quizes"
+                    + "?user=root&password=killer");
         } catch (SQLException se) {
             System.err.println("Couldn't connect to database");
         }
@@ -35,7 +35,6 @@ public class AccessDB {
     }
 
     public String query(String st) {
-        System.out.println("QUERY: " + st);
 
         StringBuilder returnString = new StringBuilder();
         try {
@@ -48,9 +47,10 @@ public class AccessDB {
             while (rs.next()) {
                 for (int i = 1; i <= columnCount; i++) {
                     returnString.append(rs.getString(i));
+                    returnString.append(" ");
                 }
                 //separates records
-                returnString.append("$#&");
+                returnString.append("#!");
             }
             //stuff
             rs.close();
@@ -81,7 +81,7 @@ public class AccessDB {
             //stuff
             statement.close();
         } catch (SQLException se) {
-            System.err.println("Error updating database");
+            System.err.println("Error updating database: " + se.getMessage());
         }
 
     }

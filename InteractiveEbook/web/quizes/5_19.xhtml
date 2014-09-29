@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-19</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <span id = "sectiontitle">Section 5.7 Minimizing Numerical Errors</span><div id="question"><div id="questionstatement">
+                <em id="questionnumber">5.19</em>&nbsp; To add 0.01 + 0.02 + ... + 1.00, what order should you use to add the numbers to get better accuracy?<br/>
+                <br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-19 a" itemLabel="A. add 0.01, 0.02, ..., 1.00 in this order to a sum variable whose initial value is 0."/>
+
+                <f:selectItem itemValue="5-19 b" itemLabel="B.  add 1.00, 0.99, 0.98, ..., 0.02, 0.01 in this order to a sum variable whose initial value is 0."/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 19" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-19&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-19&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>

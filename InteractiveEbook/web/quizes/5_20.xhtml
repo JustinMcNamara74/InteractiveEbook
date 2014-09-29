@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Problem 5-20</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <!--<h:outputStylesheet library="css" name="style.css"/>-->
+
+        <span id = "sectiontitle">Section 5.9 Keywords break and continue</span><div id="question"><div id="questionstatement"><em id="questionnumber">5.20</em>
+                &nbsp;	Will the following program terminate?<br/><br/>int&nbsp;balance&nbsp;=&nbsp;10;<br/><br/>while&nbsp;(true)&nbsp;{<br/>&nbsp;&nbsp;if 
+                (balance &lt; 9) break;<br/>&nbsp;&nbsp;balance = balance - 9;<br/>}<br/><br/></div></div>  
+
+        <h:form>
+
+            <h:selectOneRadio value="#{quizBean.answer}" layout="pageDirection">
+
+                <f:selectItem itemValue="5-20 a" itemLabel="A. Yes"/>
+
+                <f:selectItem itemValue="5-20 b" itemLabel="B. No"/> 
+
+            </h:selectOneRadio>
+            <h:commandButton value="Submit Question 20" action="#{quizBean.submit()}"/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Your answer is correct!" rendered="#{quizBean.isRight(&quot;5-20&quot;)}"/>
+            <h:outputLabel value="Your answer is incorrect!" rendered="#{quizBean.isWrong(&quot;5-20&quot;)}"/>
+            <h:commandLink value="Back" action="index.xhtml"/>
+        </h:form>
+
+    </body>
+
+</html>
