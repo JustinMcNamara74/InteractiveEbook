@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Chapter 5</title>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 <style>
 
 /* Elements */
@@ -175,11 +179,23 @@ li {
 	font-weight: bold;
 }
 
+#margin {
+	width: 150px; float: left;
+	
+	font-size: 0.75em;
+}
+
 </style>
 </head>
 
 <body>
-<a id="top"/>
+<div id="container">
+	<div id="margin">
+    
+    </div>
+  <div id="chapterText" style="margin-left: 150px;">
+
+<a id="top"></a>
 <p align="left" class="chapterHeading"><strong>CHAPTER 5</strong></p>
 <p class="chapterHeading"><strong>LOOPS</strong></p>
 <p> <strong>Objectives</strong></p>
@@ -202,9 +218,9 @@ li {
 
 
 <!-- SECTION 5.1 -->
-<a id="5-1"/>
+<a id="5-1"></a>
 <p class="sectionHeading">5.1 Introduction</p>
-<p class="keyPoint"><span id="key-point"></span>A loop can be used to tell a program to execute statements repeatedly.
+<p class="keyPoint">A loop can be used to tell a program to execute statements repeatedly.
 </p>
 <p><span class="keyTerm" value="problem"></span>Suppose that you need to display a string (e.g., <span class="highlightedWord">Welcome to Java!</span>) a hundred times. It would be tedious to have to write the following statement a hundred times: </p>
 <p><img width="352" height="53" src="Chapter5-Better_clip_image002.jpg"></p>
@@ -224,7 +240,7 @@ li {
 
 
 <!-- SECTION 5.2 -->
-<a id="5-2"/>  
+<a id="5-2"></a>  
 <p class="sectionHeading">5.2 The <span class="highlightedWord">while</span> Loop</p>
 
 
@@ -315,21 +331,21 @@ Yes, the number is 39</pre></div>
    3  <span class="javaKeyWord">public class</span> GuessNumberOneTime {
    4    <span class="javaKeyWord">public static void</span> main(String[] args) {
    5      <span class="javaComment">// Generate a random number to be guessed</span>
-<span class="keyTerm" value="generate a number"></span>   6      <span class="javaHighlighted"><span class="javaKeyWord">int</span> number = (</span><span class="javaHighlighted javaKeyWord">int</span><span class="javaHighlighted">)(Math.random() * </span><span class="javaHighlighted javaInteger">101</span><span class="javaHighlighted">);</span>
+<div class="keyTerm" value="generate a number"></div>   6      <span class="javaHighlighted"><span class="javaKeyWord">int</span> number = (</span><span class="javaHighlighted javaKeyWord">int</span><span class="javaHighlighted">)(Math.random() * </span><span class="javaHighlighted javaInteger">101</span><span class="javaHighlighted">);</span>
    7 
    8      Scanner input = <span class="javaKeyWord">new</span> Scanner(System.in);
    9      System.out.println(<span class="javaString">"Guess a magic number between 0 and 100"</span>);
   10 
   11      <span class="javaComment">// Prompt the user to guess the number</span>
   12      System.out.print(<span class="javaString">"\nEnter your guess: "</span>);
-<span class="keyTerm" value="enter a guess"></span>  13      <span class="javaHighlighted javaKeyWord">int</span><span class="javaHighlighted"> guess = input.nextInt();</span>
+<div class="keyTerm" value="enter a guess"></div>  13      <span class="javaHighlighted javaKeyWord">int</span><span class="javaHighlighted"> guess = input.nextInt();</span>
   14       
   15      <span class="javaHighlighted javaKeyWord">if</span><span class="javaHighlighted"> (guess == number)</span>
-<span class="keyTerm" value="correct guess?"></span>  16        System.out.println(<span class="javaString">"Yes, the number is "</span> + number);
+<div class="keyTerm" value="correct guess?"></div>  16        System.out.println(<span class="javaString">"Yes, the number is "</span> + number);
   17      <span class="javaHighlighted javaKeyWord">else if</span><span class="javaHighlighted"> (guess > number)</span>
-<span class="keyTerm" value="too high?"></span>  18        System.out.println(<span class="javaString">"Your guess is too high"</span>);
+<div class="keyTerm" value="too high?"></div>  18        System.out.println(<span class="javaString">"Your guess is too high"</span>);
   19      <span class="javaKeyWord">else</span>
-<span class="keyTerm" value="too low?"></span>  20        System.out.println(<span class="javaString">"Your guess is too low"</span>);
+<div class="keyTerm" value="too low?"></div>  20        System.out.println(<span class="javaString">"Your guess is too low"</span>);
   21    }
   22  }</pre>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;When you run this program, it prompts the user to enter a guess only once. To let the user enter a guess repeatedly, you may wrap the code in lines 11–20 in a loop as follows:  </p>
@@ -370,7 +386,7 @@ Yes, the number is 39</pre></div>
    3  <span class="javaKeyWord">public class</span> GuessNumber {
    4    <span class="javaKeyWord">public static</span> void main(String[] args) {
    5      <span class="javaComment">// Generate a random number to be guessed</span>
-<span class="keyTerm" value="generate a number"></span>   6      <span class="javaKeyWord">int</span> number = (<span class="javaKeyWord">int</span>)(Math.random() * <span class="javaInteger">101</span>);
+<div class="keyTerm" value="generate a number"></div>   6      <span class="javaKeyWord">int</span> number = (<span class="javaKeyWord">int</span>)(Math.random() * <span class="javaInteger">101</span>);
    7 
    8      Scanner input = <span class="javaKeyWord">new</span> Scanner(System.in);
    9      System.out.println(<span class="javaString">"Guess a magic number between 0 and 100"</span>);
@@ -379,14 +395,14 @@ Yes, the number is 39</pre></div>
   12      <span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (guess != number) {</span>
   13        <span class="javaComment">// Prompt the user to guess the number</span>
   14        System.out.print(<span class="javaString">"\nEnter your guess: "</span>);
-<span class="keyTerm" value="enter a guess"></span>  15        guess = input.nextInt();
+<div class="keyTerm" value="enter a guess"></div>  15        guess = input.nextInt();
   16 
   17        <span class="javaKeyWord">if</span> (guess == number)
   18          System.out.println(<span class="javaString">"Yes, the number is "</span> + number);
   19        <span class="javaKeyWord">else if</span> (guess > number)
-<span class="keyTerm" value="too high?"></span>  20         System.out.println(<span class="javaString">"Your guess is too high"</span>);
+<div class="keyTerm" value="too high?"></div>  20         System.out.println(<span class="javaString">"Your guess is too high"</span>);
   21        <span class="javaKeyWord">else</span>
-<span class="keyTerm" value="too low?"></span>  22         System.out.println(<span class="javaString">"Your guess is too low"</span>); 
+<div class="keyTerm" value="too low?"></div>  22         System.out.println(<span class="javaString">"Your guess is too low"</span>); 
   23      } <span class="javaComment">// End of loop</span>
   24    }
   25  }</pre>
@@ -486,7 +502,7 @@ Yes, the number is 39</pre></div>
     }</pre>
   
   <p class="subSectionHeading">5.2.3  Case Study: Multiple Subtraction Quiz</p>
-  <span class="videoNote" value="Multiple subtraction quiz"></span><p>The Math subtraction learning tool program in Listing 3.3, SubtractionQuiz.java, generates just one question for each run. You can use a loop to generate questions repeatedly. How do you write the code to generate five questions? Follow the loop design strategy. First identify the statements that need to be repeated. These are the statements for obtaining two random numbers, prompting the user with a subtraction question, and grading the question. Second, wrap the statements in a loop. Third, add a loop control variable and the <span class="highlightedWord">loop-continuation-condition</span> to execute the loop five times. </p>
+  <div class="videoNote" value="Multiple subtraction quiz"></div><p>The Math subtraction learning tool program in Listing 3.3, SubtractionQuiz.java, generates just one question for each run. You can use a loop to generate questions repeatedly. How do you write the code to generate five questions? Follow the loop design strategy. First identify the statements that need to be repeated. These are the statements for obtaining two random numbers, prompting the user with a subtraction question, and grading the question. Second, wrap the statements in a loop. Third, add a loop control variable and the <span class="highlightedWord">loop-continuation-condition</span> to execute the loop five times. </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Listing 5.4 gives a program that generates five questions and, after a student answers all five, reports the number of correct answers. The program also displays the time spent on the test and lists all the questions.</p>
 <p><span class="listingHeadingMain">Listing 5.4 -</span><span class="listingHeadingTitle"> SubtractionQuizLoop.java</span></p>
 <pre class="javaCode">   1  <span class="javaKeyWord">import</span> java.util.Scanner;
@@ -500,7 +516,7 @@ Yes, the number is 39</pre></div>
    9      String output = <span class="javaString">" "</span>; <span class="javaComment">// output string is initially empty</span>
   10      Scanner input = <span class="javaKeyWord">new</span> Scanner(System.in);
   11      
-<span class="keyTerm" value="loop"></span>  12      <span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (count < NUMBER_OF_QUESTIONS) {</span>
+<div class="keyTerm" value="loop"></div>  12      <span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (count < NUMBER_OF_QUESTIONS) {</span>
   13        <span class="javaComment">// 1. Generate two random single-digit integers</span>
   14        <span class="javaKeyWord">int</span> number1 = (<span class="javaKeyWord">int</span>)(Math.random() * <span class="javaInteger">10</span>);
   15        <span class="javaKeyWord">int</span> number2 = (<span class="javaKeyWord">int</span>)(Math.random() * <span class="javaInteger">10</span>);
@@ -529,14 +545,14 @@ Yes, the number is 39</pre></div>
   38        <span class="javaComment">// Increase the question count</span>
   39        count++;
   40 
-<span class="keyTerm" value="prepare output"></span>  41        output += <span class="javaString">"\n"</span> + number1 + <span class="javaString">"-"</span> + number2 + <span class="javaString">"="</span> + answer +
+<div class="keyTerm" value="prepare output"></div>  41        output += <span class="javaString">"\n"</span> + number1 + <span class="javaString">"-"</span> + number2 + <span class="javaString">"="</span> + answer +
   42          ((number1 - number2 == answer) ? <span class="javaString">" correct"</span> : <span class="javaString">" wrong"</span>);
-<span class="keyTerm" value="end loop"></span>  43      }
+<div class="keyTerm" value="end loop"></div>  43      }
   44 
-<span class="keyTerm" value="get end time"></span>  45      <span class="javaHighlighted javaKeyWord">long</span><span class="javaHighlighted"> endTime = System.currentTimeMillis();</span>
-<span class="keyTerm" value="test time"></span>  46      <span class="javaHighlighted javaKeyWord">long</span><span class="javaHighlighted"> testTime = endTime - startTime;</span>
+<div class="keyTerm" value="get end time"></div>  45      <span class="javaHighlighted javaKeyWord">long</span><span class="javaHighlighted"> endTime = System.currentTimeMillis();</span>
+<div class="keyTerm" value="test time"></div>  46      <span class="javaHighlighted javaKeyWord">long</span><span class="javaHighlighted"> testTime = endTime - startTime;</span>
   47 
-<span class="keyTerm" value="display result"></span>  48      System.out.println(<span class="javaString">"Correct count is "</span> + correctCount +
+<div class="keyTerm" value="display result"></div>  48      System.out.println(<span class="javaString">"Correct count is "</span> + correctCount +
   49        <span class="javaString">"\nTest time is "</span> + testTime / <span class="javaInteger">1000</span> + <span class="javaString">" seconds\n"</span> + output);
   50    }
   51  }</pre>
@@ -583,20 +599,20 @@ Test time is 1021 seconds
    9      <span class="javaComment">// Read an initial data</span>
   10      System.out.print(
   11        <span class="javaString">"Enter an integer (the input ends if it is 0): "</span>);
-<span class="keyTerm" value="input"></span>  12      <span class="javaKeyWord">int</span> data = input.nextInt();
+<div class="keyTerm" value="input"></div>  12      <span class="javaKeyWord">int</span> data = input.nextInt();
   13 
   14      <span class="javaComment">// Keep reading data until the input is 0</span>
   15      <span class="javaKeyWord">int</span> sum = <span class="javaInteger">0</span>;
-<span class="keyTerm" value="loop"></span>  16      <span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (data != </span><span class="javaHighlighted javaInteger">0</span><span class="javaHighlighted">) {</span>
+<div class="keyTerm" value="loop"></div>  16      <span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (data != </span><span class="javaHighlighted javaInteger">0</span><span class="javaHighlighted">) {</span>
   17        sum += data;
   18 
   19        <span class="javaComment">// Read the next data</span>
   20        System.out.print(
   21          <span class="javaString">"Enter an integer (the input ends if it is 0): "</span>);
   22        data = input.nextInt();
-<span class="keyTerm" value="end of loop"></span>  23      }
+<div class="keyTerm" value="end of loop"></div>  23      }
   24 
-<span class="keyTerm" value="display result"></span>  25      System.out.println(<span class="javaString">"The sum is "</span> + sum);
+<div class="keyTerm" value="display result"></div>  25      System.out.println(<span class="javaString">"The sum is "</span> + sum);
   26    }
   27  }   </pre>
 <div class="outputBox">
@@ -711,9 +727,9 @@ The sum is 9</pre></div><br>
 <pre class="consoleCommand">    java SentinelValue  output.txt</pre>
 <p>Try running the program to see what contents are in <strong>output.txt</strong>. </p>
 
-<span class="checkpoint"></span><table width="100%">
+<table width="100%">
 	<tr>
-    	<td width="6%" valign="top" class="checkpointNumber">5.1</td>
+    	<td width="6%" valign="top" class="checkpointNumber"><div class="checkpoint"></div>5.1</td>
         <td width="94%"><p>Analyze the following code. Is count < 100 always true, always false, or sometimes true or sometimes false at Point A, Point B, and Point C?</p>
         <pre class="javaCode">  <span class="javaKeyWord">int</span> count = <span class="javaInteger">0</span>;
   <span class="javaKeyWord">while</span> (count < <span class="javaInteger">100</span>) {
@@ -773,8 +789,7 @@ The sum is 9</pre></div><br>
 </table>
 <iframe src="wordmatch/Section5_2.html" width="100%" height="400px" frameborder="0"></iframe>
 
-<a id="5-3"/>
-<p class="sectionHeading">5.3 The <span class="highlightedWord">do-while</span> Loop </p>
+<p class="sectionHeading"><a id="5-3"></a>5.3 The <span class="highlightedWord">do-while</span> Loop </p>
 <p class="keyPoint">A <span class="highlightedWord">do-while</span> loop is the same as a <span class="highlightedWord">while</span> loop except that it executes the loop body first and then checks the loop continuation condition.</p>
 <end key point>
 <p>The
@@ -802,14 +817,14 @@ The sum is 9</pre></div><br>
   10      Scanner input = <span class="javaKeyWord">new</span> Scanner(System.in);
   11 
   12      <span class="javaComment">// Keep reading data until the input is 0</span>
-<span class="keyTerm" value="loop"></span>  13      <span class="javaHighlighted javaKeyWord">do</span><span class="javaHighlighted"> {</span>
+<div class="keyTerm" value="loop"></div>  13      <span class="javaHighlighted javaKeyWord">do</span><span class="javaHighlighted"> {</span>
   14        <span class="javaComment">// Read the next data</span>
   15        System.out.print(
   16          <span class="javaString">"Enter an integer (the input ends if it is 0): "</span>);
   17        data = input.nextInt();
   18 
   19        sum += data;
-<span class="keyTerm" value="end loop"></span>  20      <span class="javaHighlighted">} </span><span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (data != </span><span class="javaHighlighted javaInteger">0</span><span class="javaHighlighted">);</span>
+<div class="keyTerm" value="end loop"></div>  20      <span class="javaHighlighted">} </span><span class="javaHighlighted javaKeyWord">while</span><span class="javaHighlighted"> (data != </span><span class="javaHighlighted javaInteger">0</span><span class="javaHighlighted">);</span>
   21 
   22      System.out.println(<span class="javaString">"The sum is "</span> + sum);
   23    }
@@ -827,9 +842,9 @@ The sum is 14</pre>
   <span class="tipTIP">TIP</span>
   <p>Use a <span class="highlightedWord">do-while</span> loop if you have statements inside the loop that must be executed at least once, as in the case of the <span class="highlightedWord">do-while</span> loop in the preceding <span class="highlightedWord">TestDoWhile</span> program. These statements must appear before the loop as well as inside it if you use a <span class="highlightedWord">while</span> loop.</p></div>
 <br>
- <span class="checkpoint"></span><table width="100%">
-	<tr>
-    	<td width="6%" valign="top" class="checkpointNumber">5.6</td>
+<table width="100%">
+   <tr>
+    	<td width="6%" valign="top" class="checkpointNumber"><div class="checkpoint"></div>5.6</td>
         <td width="94%"><p>Suppose the input is <span class="highlightedWord">2 3 4 5 0</span>. What is the output of the following code? </p>
           <pre class="javaCode">  <span class="javaKeyWord">import</span> java.util.Scanner;
   
@@ -871,5 +886,80 @@ The sum is 14</pre>
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/ViuCqrUSTMU" frameborder="0"></iframe>
 
+
+    </div>
+</div>
+<script type="text/javascript">
+
+var marginBar = $("#margin");
+
+var createMarginImages = function(elemClass, imgSrc, offsetTop, offsetLeft) {
+	$(elemClass).each(function() {
+		var kp = $(this);
+		
+		// Create a keypoint img
+		var kpImg = $("<img/>", {
+			src: imgSrc
+		});
+		
+		kpImg.appendTo(marginBar);
+		kpImg.css({"position" : "absolute"});
+		
+		kpImg.offset({
+			top: kp.offset().top-offsetTop,
+			left: offsetLeft
+		});
+	});
+};
+
+var createMarginItems = function() {
+	
+	var lastTop = 0;
+	// Loop through all elements with the class 'keyTerm'
+	$(".keyTerm").each(function() {
+		
+		var ktSpan = $(this);
+		
+		var ktText = ktSpan.text();
+		
+		if(ktText == "") {
+			ktText = ktSpan.attr("value");
+		}
+		
+		// Create a new div and place it in the margin
+		var ktDiv = $("<div/>", {
+			text: ktText
+		});
+		
+		ktDiv.appendTo(marginBar);
+		
+		// Set the position of the new div to match that of the span
+		var offsetTop = ktSpan.offset().top+2;
+		
+		// Simple check for overlapping terms. Only supports two terms being
+		// on the same line.
+		if(offsetTop == lastTop) {
+			offsetTop += 15;	
+		}
+		
+		ktDiv.offset({
+			top: offsetTop,
+			left: 5
+		});
+		
+		lastTop = offsetTop;
+	});
+	
+
+	createMarginImages(".keyPoint", "keypoint.png", 10, 85);
+	createMarginImages(".checkpoint", "checkpoint.png", 0, 85);
+	createMarginImages(".outputBox", "laptop.png", -10, 95);
+	createMarginImages(".traceBox", "search-icon.png", -10, 95);
+	createMarginImages(".videoNote", "video-icon.png", 0, 95);
+};
+
+createMarginItems();
+
+</script>
 </body>
 </html>

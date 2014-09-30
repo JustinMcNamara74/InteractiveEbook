@@ -1,0 +1,192 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 30, 2014, 2:30:50 AM
+    Author     : James
+*/
+
+    /* Elements */
+    p {
+        line-height: 200%;
+    }
+
+    li {
+        padding-bottom: 6px;
+    }
+
+
+    /* Classes */
+    .chapterHeading {
+        font-size: 2em;
+        color: #245990;
+    }
+
+    .sectionHeading {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #245990;
+    }
+
+    .subSectionHeading {
+        font-size: 1.2em;
+        color: #245990;
+    }
+
+    .figureText {
+        font-size: 0.75em;      
+    }
+
+    .figureHeading {
+        font-weight: bold;
+        color: #245990;
+    }
+
+    .listingHeadingMain {
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #2B295F;
+    }
+
+    .listingHeadingTitle {
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #245990;
+    }
+
+    .highlightedWord {
+        font-weight: bold;
+        color: #4591E1;
+    }
+
+    .keyPoint {
+        font-style: italic;
+        font-weight: bold;
+        color: #245990;
+    }
+
+    .keyTerm {
+        font-style: italic;
+    }
+
+    .checkpointNumber {
+        font-weight: bold;
+        font-size: 1.2em;
+        line-height: 300%;
+    }
+
+
+    /* Boxes */
+    .noteNOTE {
+        font-weight: bold;
+        padding-bottom: 15px;
+    }
+
+    .noteBox {
+        border: 1px dashed #333333;
+        background-color: #C1D7FF;
+        padding: 10px;
+    }
+
+    .cautionCAUTION {
+        font-weight: bold;
+        padding-bottom: 15px;
+    }
+
+    .cautionBox {
+        border: 1px dashed #333333;
+        background-color: #FFD7D8;
+        padding: 10px;
+    }
+
+    .tipTIP {
+        font-weight: bold;
+        padding-bottom: 15px;
+    }
+
+    .tipBox {
+        border: 1px dashed #333333;
+        background-color: #E9D392;
+        padding: 10px;
+    }
+
+    .outputBox {
+        border: 1px solid #333333;
+        background-color: #C1FFF8;
+        padding: 10px;
+    }
+
+    .outputText {
+        line-height: 150%;
+        border: 0px;
+        background: none;
+    }
+
+    .outputBoxHighlighted {
+        background-color: #C1D7FF;
+    }
+
+    .traceBox {
+        border: 1px solid #333333;
+        background-color: #D4FFEB;
+        padding: 10px;
+    }
+
+    .traceBoxIterationBracket {
+        font-size: 2.5em;       
+    }
+
+
+
+    /* JavaCodeStyling */
+    .javaCode {
+        line-height: 150%;
+    }
+
+    .javaKeyWord {
+        font-weight: bold;
+        color: #245990;
+    }
+
+    .javaInteger {
+        font-weight: bold;
+        color: #0185AD;
+    }
+
+    .javaDouble {
+        font-weight: bold;
+        color: #0185AD;
+    }
+
+    .javaString {
+        font-weight: bold;
+        color: #0185AD;
+    }
+
+    .javaComment {
+        color: #939393;
+    }
+
+    .javaHighlighted {
+        background-color: #A3B9D3;      
+    }
+
+
+    /* Extra Stylings */
+
+    .consoleCommand {
+        font-weight: bold;
+    }
+
+    #margin {
+        width: 150px; float: left;
+        
+        font-size: 0.75em;
+    }
+
+div.cleanuphtml-4 {margin-left: 150px;}
+th.cleanuphtml-3 {border-bottom: 2px solid #000000;}
+img.cleanuphtml-2 {margin-bottom: -4px}
+p.cleanuphtml-1 {text-align: left}
