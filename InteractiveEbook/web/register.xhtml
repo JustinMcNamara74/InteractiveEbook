@@ -25,13 +25,13 @@
                             <h:outputText value="Desired Username:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.userName}" required="true" requiredMessage="Username is required." 
                                          validatorMessage="Please stop trying to hack- Letters only!">
-                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"/>
+                                <f:validateRegex pattern="^[A-Za-z0-9_-]{3,15}$"/>
                             </b:inputText>
 
                             <h:outputText value="Password:"  style="font-weight: bold;" />
                             <h:inputSecret value="#{userBean.password}" required="true" requiredMessage="Password is required." class="form-control" 
                                            validatorMessage="Seriously...Stop!">
-                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"/>
+                                <f:validateRegex pattern="^[A-Za-z0-9_-]{3,15}$"/>
                             </h:inputSecret>
 
                             <h:outputText value="Confirm Password:"  style="font-weight: bold;" />
@@ -46,19 +46,19 @@
                             <h:outputText value="First Name:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.firstName}" required="true" requiredMessage="First name is required."
                                          validatorMessage="Please stop trying to hack- Letters only!">
-                                <f:validateRegex pattern="[a-zA-Z]+.{1,20}"/>
+                                <f:validateRegex pattern="[a-zA-Z]{3,20}"/>
                             </b:inputText>
 
                             <h:outputText value="Middle Initial:"/>
                             <b:inputText value="#{userBean.middle}" maxlength="1" style="width: 40px"
                                          validatorMessage="Middle Initial Too Long">
-                                <f:validateLength minimum="1" maximum="1" />
+                               <f:validateRegex pattern="[a-zA-Z]{1}"/>
                             </b:inputText>
 
                             <h:outputText value="Last Name:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.lastName}" required="true" requiredMessage="Last name is required."
                                          validatorMessage="Please stop trying to hack- Letters only!">
-                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                                <f:validateRegex pattern="[a-zA-Z]{3,20}"/>
 
                             </b:inputText>
 
@@ -68,8 +68,7 @@
                                          validatorMessage="HTML - Invalid email format"
                                          value="#{userBean.email}">
 
-                                <f:validateRegex
-                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu)"/>
 
                             </h:inputText>
 
