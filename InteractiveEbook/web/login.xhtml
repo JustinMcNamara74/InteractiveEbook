@@ -24,7 +24,9 @@
                             <h:inputSecret value="#{userBean.password}" required="true" requiredMessage="Password is required." class="form-control"/>
 
                             <h:outputText value="" />
-                            <b:commandButton value="Login" look="primary" action="#{loginBean.login}" style="margin-top:15px"/>
+                            <h:commandButton value="Login" action="#{loginBean.login}" style="margin-top:15px">
+                                <f:param name="redir" value="#{param['redir']}" />
+                            </h:commandButton>
                         </h:panelGrid>
                     </h:form>
                 </h:panelGroup>

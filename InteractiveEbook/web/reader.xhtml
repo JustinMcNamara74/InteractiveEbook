@@ -13,8 +13,8 @@
             <ui:include src="/template/navbar.xhtml" />
 	</ui:insert>
         
-        <table width="100%">
-            <tr>
+        <table width="100%" height="100%">
+            <tr height="100%">
                 <td width="25%">
                     <div id="chapterFrame" align="left" style="overflow: auto;">
                         <b:panel look="primary">
@@ -40,16 +40,16 @@
                     </div>
                 </td>
                 
-                <td width="75%" align="center">
+                <td width="75%" align="center" height="100%">
                     <h:panelGroup rendered="#{userBean.loggedIn}">
                         <h:panelGroup rendered="#{(param['chapter'] == 5)}" style="height: 100%;">
                             
-                                <iframe id="textFrame" name="chapterTextFrame" src="chapters/Chapter5.html" width="100%" height="100%"></iframe>
+                            <iframe id="textFrame" name="chapterTextFrame" src="chapters/Chapter5.html" width="100%" height="100%" frameborder="0" style="height: 100%;"></iframe>
                         </h:panelGroup>
                     </h:panelGroup>
                     
                     <h:panelGroup rendered="#{(param['chapter'] != null and !userBean.loggedIn)}">
-                        <h2>You must <a href="register.xhtml">register</a> or <a href="login.xhtml">login</a> before you can access this chapter.</h2>
+                        <h2>You must  <a href="register.xhtml?redir=reader.xhtml%3Fchapter%3D#{param['chapter']}">register</a> or <a href="login.xhtml?redir=reader.xhtml%3Fchapter%3D#{param['chapter']}">login</a> before you can access this chapter.</h2>
                     </h:panelGroup>
                     
                     <h:panelGroup rendered="#{param['chapter'] == null}">

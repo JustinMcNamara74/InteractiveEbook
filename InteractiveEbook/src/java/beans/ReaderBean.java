@@ -6,6 +6,8 @@ package beans;
  * and open the template in the editor.
  */
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
@@ -89,6 +91,19 @@ public class ReaderBean {
         chapter5.addSubsection(11, "Case Study: Displaying Prime Numbers");
         
         return chapters;
+    }
+    
+    public String encodeForURL(String strToEncode) {
+        String encoded = strToEncode;
+        
+        try {
+            encoded = URLEncoder.encode(strToEncode, "UTF-8");    
+        }
+        catch(UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        }
+        
+        return encoded;
     }
     
     public class Chapter {

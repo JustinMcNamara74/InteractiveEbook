@@ -2,10 +2,14 @@ package beans;
 
 import data.AccessDB;
 import data.Register;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import utils.Email;
@@ -38,6 +42,19 @@ public class RegisterBean implements Serializable {
             if (AccessDB.getInstance().isValidCode(userBean.getAccessCode())){
                 if(Register.register(userBean)) {
                     userBean.setLoggedIn(true);
+                    
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    ExternalContext externalContext = context.getExternalContext();
+
+                    try {
+                        Map<String,String> params = externalContext.getRequestParameterMap();
+
+                        String url = params.get("redir");
+                        externalContext.redirect(url);
+                    }
+                    catch(IOException ex) {
+                        ex.printStackTrace();
+                    }
                 }
                 else {
                     response = "Username is already taken.";

@@ -1,0 +1,77 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/boxes.css" />
+    <script type="text/javascript" src="js/event.js"></script>
+  </head>
+  <body>
+    <div id="maincontentstyle">
+      <center>
+        <div id="boxstyle">
+          <h3 id="h3style">Word Matching Exercise for Section 5.2</h3>
+          <center>
+            <div class="source" ondrop="drop(event)" ondragover="allowDrop(event)">
+              <div id="drag3" draggable=true ondragstart="drag(event, 3)" class="draggyBox-small">Loop Body</div>
+              <div id="drag4" draggable=true ondragstart="drag(event, 4)" class="draggyBox-small">Iteration</div>
+              <div id="drag5" draggable=true ondragstart="drag(event, 5)" class="draggyBox-small">Loop Condition</div>
+              <div id="drag1" draggable=true ondragstart="drag(event, 1)" class="draggyBox-small">Infinite Loop</div>
+              <div id="drag6" draggable=true ondragstart="drag(event, 6)" class="draggyBox-small">Sentinel Value</div>
+              <div id="drag2" draggable=true ondragstart="drag(event, 2)" class="draggyBox-small">Off-by-one</div>
+            </div>
+          </center>
+          <table id="tablestyle">
+            <tr id="row1">
+              <td>
+                <div class="target" ondrop="drop(event, 1)" ondragover="allowDrop(event)"></div>
+              </td>
+              <td>
+                is a loop that runs forever due to an error in the code.
+              </td>
+            </tr>  
+            <tr id="row2">
+              <td>
+                <div class="target" ondrop="drop(event, 2)" ondragover="allowDrop(event)"></div>
+              </td>
+              <td>
+                is an error in the program that causes the loop body to be executed one more or less time.
+              </td>
+            </tr>  
+            <tr id="row3">
+              <td>
+                <div class="target" ondrop="drop(event, 3)" ondragover="allowDrop(event)"></div>
+              </td>
+              <td>
+                is the part of the body that contains the statements to be repeated. 
+              </td>
+            </tr>  
+            <tr id="row4">
+              <td>
+                <div class="target" ondrop="drop(event, 4)" ondragover="allowDrop(event)"></div>
+              </td>
+              <td>
+                is one time execution of the loop body.
+              </td>
+            </tr>  
+            <tr id="row5">
+              <td>
+                <div class="target" ondrop="drop(event, 5)" ondragover="allowDrop(event)"></div>
+              </td>
+              <td>
+                is a Boolean expression that controls the execution of the loop.
+              </td>
+            </tr>  
+            <tr id="row6">
+              <td>
+                <div class="target" ondrop="drop(event, 6)" ondragover="allowDrop(event)"></div>
+              </td>
+              <td>
+                is a special value that signifies the end of the input.
+              </td>
+            </tr>  
+          </table>
+        </div>
+      </center>
+    </div>
+  </body>
+</html>

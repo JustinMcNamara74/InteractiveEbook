@@ -7,8 +7,12 @@ package beans;
  */
 
 import data.Login;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -36,6 +40,20 @@ public class LoginBean implements Serializable {
         if(Login.login(userBean.getUserName(), userBean.getPassword())) {
             userBean.setLoggedIn(true);
             response = "";
+            
+            FacesContext context = FacesContext.getCurrentInstance();
+            ExternalContext externalContext = context.getExternalContext();
+            
+            try {
+                Map<String,String> params = externalContext.getRequestParameterMap();
+                
+                String url = params.get("redir");
+                System.out.println("REDIR: "+url);
+                externalContext.redirect(url);
+            }
+            catch(IOException ex) {
+                ex.printStackTrace();
+            }
         }
         else {
             response = "Invalid username and/or password :(";

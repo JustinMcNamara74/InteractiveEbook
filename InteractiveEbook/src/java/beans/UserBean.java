@@ -6,8 +6,10 @@ package beans;
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -38,16 +40,24 @@ public class UserBean implements Serializable {
     
     private boolean loggedIn;
 
-     
+    
     public UserBean(){
    
     }
 
     
     public boolean logout(){
-        FacesContext.getCurrentInstance().
-                getExternalContext().invalidateSession();
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
         
+        externalContext.invalidateSession();
+        
+        try {
+            externalContext.redirect("index.xhtml");
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
+        }
         return true;
     }
     
