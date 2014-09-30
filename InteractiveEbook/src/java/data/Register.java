@@ -33,8 +33,6 @@ public class Register {
             return false;
         }
         
-        Populate.populate(user.getUserName());
-        //}
         return true;
     }
 }

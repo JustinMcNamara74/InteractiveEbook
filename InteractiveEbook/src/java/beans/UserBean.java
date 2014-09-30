@@ -40,7 +40,7 @@ public class UserBean implements Serializable {
     
     private boolean loggedIn;
 
-    
+   
     public UserBean(){
    
     }
@@ -201,6 +201,21 @@ public class UserBean implements Serializable {
     public void setAccessCode(String accessCode) {
         this.accessCode = accessCode;
     }
+
+    private String originalURL;
     
+    public void recordOriginalURL(String originalURL) {
+        if(!originalURL.contains("login.xhtml") && !originalURL.contains("register.xhtml")) {
+            this.originalURL = originalURL;
+        }
+    }
+
+    /**
+     * @return the originalURL
+     */
+    public String getOriginalURL() {
+        return originalURL;
+    }
+
     
 }

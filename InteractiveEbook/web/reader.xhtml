@@ -51,12 +51,12 @@
                             </h:panelGroup>
                         </h:panelGroup>
 
-                        <h:panelGroup rendered="#{(param['chapter'] != null and !userBean.loggedIn)}">
-                            <h2>You must  <a href="register.xhtml?redir=reader.xhtml%3Fchapter%3D#{param['chapter']}">register</a> or <a href="login.xhtml?redir=reader.xhtml%3Fchapter%3D#{param['chapter']}">login</a> before you can access this chapter.</h2>
+                        <h:panelGroup rendered="#{(param['chapter'] != null and !userBean.loggedIn)}" style="text-align: center;">
+                            <h2>You must <a href="register.xhtml">register</a> or <a href="login.xhtml">login</a> before you can access this chapter.</h2>
                         </h:panelGroup>
 
-                        <h:panelGroup rendered="#{param['chapter'] == null}">
-                            <img src="images/intro10eComprehensive.jpg" align="center"/>
+                        <h:panelGroup rendered="#{param['chapter'] == null}" style="width: 100%; text-align: center;">
+                            <img src="images/intro10eComprehensive.jpg"/>
                         </h:panelGroup>
                     </div>
                 </td>

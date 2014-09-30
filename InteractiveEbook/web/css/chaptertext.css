@@ -77,6 +77,11 @@ and open the template in the editor.
         line-height: 300%;
     }
 
+    .quizHeading {
+        font-weight: bold;
+        font-size: 2em;
+        color: #0185AD;
+    }
 
     /* Boxes */
     .noteNOTE {

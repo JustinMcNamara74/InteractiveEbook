@@ -46,14 +46,13 @@ public class RegisterBean implements Serializable {
                     FacesContext context = FacesContext.getCurrentInstance();
                     ExternalContext externalContext = context.getExternalContext();
 
-                    try {
-                        Map<String,String> params = externalContext.getRequestParameterMap();
-
-                        String url = params.get("redir");
-                        externalContext.redirect(url);
-                    }
-                    catch(IOException ex) {
-                        ex.printStackTrace();
+                    if(userBean.getOriginalURL() != null) {
+                        try {
+                            externalContext.redirect(userBean.getOriginalURL());
+                        }
+                        catch(IOException ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
                 else {

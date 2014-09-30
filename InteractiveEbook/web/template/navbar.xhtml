@@ -3,9 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <body>
         <ui:composition>
+            
             <b:navBar brand="WheeReader!" brandHref="index.xhtml" fixed="top" inverse="true">
                 <b:navbarLinks>
                     <b:navLink value="About" href="#"></b:navLink>
@@ -20,6 +22,14 @@
                     <b:navLink value="Log Out" href="logout.xhtml" rendered="#{userBean.loggedIn}"></b:navLink>
                 </b:navbarLinks>
             </b:navBar>
+            
+            <f:view>
+                <ui:param name="originalURL" value="#{request.requestURI}?#{request.queryString}" />
+                <f:metadata>
+                    <f:event rendered="#{not userBean.loggedIn}" type="preRenderView" listener="#{userBean.recordOriginalURL(originalURL)}" />
+                </f:metadata>
+            </f:view>
+
         </ui:composition>
     </body>
 </html>

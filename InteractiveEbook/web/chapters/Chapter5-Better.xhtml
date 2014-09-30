@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://bootsfaces.net/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
   <body>
       <ui:composition>
+          
+        <b:modal id="amodal" title="Modal Example">
+        <p>Modal body</p>
+        <f:facet name="footer">
+        <b:button value="close" dismiss="modal" onclick="return false;"/>
+        <b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"/>
+        </f:facet>
+        </b:modal>
+
     <div id="container">
       <div id="margin"></div>
       <div id="chapterText" class="cleanuphtml-4">
@@ -1009,7 +1019,24 @@ The sum is 9
 </pre>
             </td>
           </tr>
-        </table><iframe src="chapters/wordmatch/Section5_2.html" width="100%" height="400px" frameborder="0"></iframe>
+        </table>
+        <p class="quizHeading">Quiz Time!</p>
+        <p>Click the buttons below to answer the quiz questions. Your progress will be tracked.</p>
+        <b:buttonToolbar>
+            <b:buttonGroup>
+                <button id="btrigger1" class="btn btn-warning" data-toggle="modal" data-target="#amodal">5.1</button>
+                <button id="btrigger2" class="btn btn-primary" data-toggle="modal" data-target="#amodal">Needs answer</button>
+            </b:buttonGroup>
+            <b:buttonGroup>
+                <button id="btrigger1" class="btn btn-warning" data-toggle="modal" data-target="#amodal">5.2</button>
+                <button id="btrigger2" class="btn btn-danger" data-toggle="modal" data-target="#amodal">Incorrect :(</button>
+            </b:buttonGroup>
+            <b:buttonGroup>
+                <button id="btrigger1" class="btn btn-warning" data-toggle="modal" data-target="#amodal">5.3</button>
+                <button id="btrigger2" class="btn btn-success" data-toggle="modal" data-target="#amodal">Correct! :)</button>
+            </b:buttonGroup>
+        </b:buttonToolbar>
+        <iframe src="chapters/wordmatch/Section5_2.html" width="100%" height="400px" frameborder="0"></iframe>
         <p class="sectionHeading">
           <a id="5-3"></a>5.3 The <span class="highlightedWord">do-while</span> Loop
         </p>

@@ -9,8 +9,8 @@ package beans;
 import data.Login;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Map;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -21,13 +21,14 @@ import javax.inject.Named;
  * @author James
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class LoginBean implements Serializable {
 
     @Inject
     private UserBean userBean;
     
     private String response;
+    private String originalURL;
     
     /**
      * Creates a new instance of LoginBean
@@ -35,24 +36,27 @@ public class LoginBean implements Serializable {
     public LoginBean() {
         
     }
+    
+    @PostConstruct
+    public void init() {
+        this.originalURL = userBean.getOriginalURL();
+    }
 
     public void login() {
         if(Login.login(userBean.getUserName(), userBean.getPassword())) {
             userBean.setLoggedIn(true);
             response = "";
             
-            FacesContext context = FacesContext.getCurrentInstance();
-            ExternalContext externalContext = context.getExternalContext();
-            
-            try {
-                Map<String,String> params = externalContext.getRequestParameterMap();
-                
-                String url = params.get("redir");
-                System.out.println("REDIR: "+url);
-                externalContext.redirect(url);
-            }
-            catch(IOException ex) {
-                ex.printStackTrace();
+            if(originalURL != null) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                ExternalContext externalContext = context.getExternalContext();
+
+                try {
+                    externalContext.redirect(originalURL);
+                }
+                catch(IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
         else {
