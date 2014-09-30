@@ -61,7 +61,7 @@ public class AccessDB {
         return returnString.toString();
     }
 
-    public boolean isValidCode(int code) {
+    public boolean isValidCode(String code) {
         AccessDB db = AccessDB.getInstance();
         String s = db.query("select code "
                 + "from AccessCodes "

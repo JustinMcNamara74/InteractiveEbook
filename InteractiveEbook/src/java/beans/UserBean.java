@@ -30,7 +30,7 @@ public class UserBean implements Serializable {
     
     // Used for registration
     private String confirmedPassword;
-    private int accessCode;
+    private String accessCode;
        
     private String firstName;
     private String lastName;
@@ -191,14 +191,14 @@ public class UserBean implements Serializable {
     /**
      * @return the accessCode
      */
-    public int getAccessCode() {
+    public String getAccessCode() {
         return accessCode;
     }
 
     /**
      * @param accessCode the accessCode to set
      */
-    public void setAccessCode(int accessCode) {
+    public void setAccessCode(String accessCode) {
         this.accessCode = accessCode;
     }
     
