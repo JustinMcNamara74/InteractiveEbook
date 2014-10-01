@@ -7,28 +7,26 @@
       xmlns:b="http://bootsfaces.net/ui">
     <body>
         <ui:composition>
-        <c:set var="questions" scope="session" value="#{quizBean.lookupQuestionsBySection(5, 2)}"/>
+        
         
         <p class="quizHeading">Quiz Time!</p>
         <p>Click the buttons below to answer the quiz questions. Your progress will be tracked.</p>
         <b:buttonToolbar>
-            <ui:repeat value="#{questions}" var="quizQuestion">
+            <ui:repeat value="#{quizQuestionsList}" var="quizQuestion">
                
                 <b:buttonGroup>
                     <button id="btrigger1" class="btn btn-warning" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">#{quizQuestion.chapter}-#{quizQuestion.number}</button>
                     
-                    <c:choose>
-                        <c:when test="#{questionStatus == QuizQuestion.INCORRECT}">
-                            <button id="btrigger2" class="btn btn-danger" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Incorrect :(</button>
-                        </c:when>
-                        <c:when test="#{questionStatus == QuizQuestion.CORRECT}">
-                            <button id="btrigger2" class="btn btn-success" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Correct! :)</button>
-                        </c:when>
-                        <c:otherwise>
-                            <button id="btrigger2" class="btn btn-primary" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Needs answer</button>
-                        </c:otherwise>
-                    </c:choose>
-                
+                        <ui:fragment rendered="#{quizQuestion.userStatus == 2}">
+                            <button id="quizTrigger#{quizQuestion.chapter}-#{quizQuestion.number}" class="btn btn-danger" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Incorrect :(</button>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{quizQuestion.userStatus == 1}">
+                            <button id="quizTrigger#{quizQuestion.chapter}-#{quizQuestion.number}" class="btn btn-success" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Correct! :)</button>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{quizQuestion.userStatus == 0}">
+                            <button id="quizTrigger#{quizQuestion.chapter}-#{quizQuestion.number}" class="btn btn-primary" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Needs answer</button>
+                        </ui:fragment>
+
                 </b:buttonGroup>
             </ui:repeat>
         </b:buttonToolbar>

@@ -5,7 +5,6 @@
  */
 package data;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +27,9 @@ public class QuizQuestion {
 
     private List<QuizAnswer> answers;
     
+    private int userStatus;
+    private List<String> userLastAnswers;
+    
     /**
      * Constructor that will handle parsing of response from AccessDB query.
      * @param questionData 
@@ -41,12 +43,10 @@ public class QuizQuestion {
         this.number = Integer.parseInt(data[2]);
         
         // make question text javascript friendly
-        this.questionText = data[3].replace("\n", "\\n");
+        this.questionText = data[3];
         
         this.multipleChoice = data[4].equals("1");
-        
-        
-        
+
     }
     
     public QuizQuestion(int chapter, int section, int number, String questionText, boolean multipleChoice) {
@@ -156,5 +156,35 @@ public class QuizQuestion {
                 return "UNANSWERED";
         }
     }
+
+    /**
+     * @return the userStatus
+     */
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    /**
+     * @param userStatus the userStatus to set
+     */
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    /**
+     * @return the userLastAnswers
+     */
+    public List<String> getUserLastAnswers() {
+        return userLastAnswers;
+    }
+
+    /**
+     * @param userLastAnswers the userLastAnswers to set
+     */
+    public void setUserLastAnswers(List<String> userLastAnswers) {
+        this.userLastAnswers = userLastAnswers;
+    }
+ 
+    
     
 }

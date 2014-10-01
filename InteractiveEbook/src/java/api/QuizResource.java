@@ -10,7 +10,6 @@ import beans.UserBean;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import data.QuizQuestion;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.ws.rs.core.Context;
@@ -99,10 +98,9 @@ public class QuizResource {
     }
     
     @GET
-    @Path("{chapter}/{section}/{number}")
+    @Path("question/{chapter}/{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getSpecificQuestion(@PathParam("chapter") Integer chapter, 
-            @PathParam("section") Integer section,
             @PathParam("number") Integer number) {
 //        if(!userBean.isLoggedIn()) {
 //            return null;
@@ -111,7 +109,7 @@ public class QuizResource {
         ObjectMapper mapper = new ObjectMapper();
         
         try {
-            return mapper.writeValueAsString(quizBean.lookupQuestion(chapter, section, number));
+            return mapper.writeValueAsString(quizBean.lookupQuestion(chapter, number));
         }
         catch(JsonProcessingException ex) {
             ex.printStackTrace();

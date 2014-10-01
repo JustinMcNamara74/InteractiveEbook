@@ -32,7 +32,7 @@ public class QuizAnswer {
         this.answer = Integer.parseInt(data[2]);
         
         // make question text javascript friendly
-        this.answerText = data[3].replace("\n", "\\n");
+        this.answerText = data[3];
         
         this.isCorrect = data[4].equals("1");
         

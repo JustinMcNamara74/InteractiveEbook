@@ -58,6 +58,9 @@ public class Email {
          // Now set the actual message
          message.setText(body);
 
+         message.setHeader("Content-Type", "text/html");
+         
+         
          // Send message
          Transport.send(message);
 

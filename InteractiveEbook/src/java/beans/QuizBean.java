@@ -5,6 +5,7 @@ import data.CheckAnswer;
 import data.QuizQuestion;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
@@ -88,6 +89,8 @@ public class QuizBean implements Serializable {
         for(String qd : questionData) {
             QuizQuestion qq = new QuizQuestion(qd);
             qq.setAnswers(db.query("select * from quizanswers where chapter = "+chapter+" and number = "+qq.getNumber()+" order by answer"));
+            qq.setUserStatus(answerStatus(chapter, qq.getNumber(), userBean.getUserName()));
+            qq.setUserLastAnswers(getLastAnswers(chapter, qq.getNumber(), userBean.getUserName()));
             questionList.add(qq);
         }
         
@@ -104,22 +107,26 @@ public class QuizBean implements Serializable {
         for(String qd : questionData) {
             QuizQuestion qq = new QuizQuestion(qd);
             qq.setAnswers(db.query("select * from quizanswers where chapter = "+chapter+" and number = "+qq.getNumber()+" order by answer"));
+            qq.setUserStatus(answerStatus(chapter, qq.getNumber(), userBean.getUserName()));
+            qq.setUserLastAnswers(getLastAnswers(chapter, qq.getNumber(), userBean.getUserName()));
             questionList.add(qq);
         }
         
         return questionList;
     }
     
-    public QuizQuestion lookupQuestion(int chapter, int section, int number) {
+    public QuizQuestion lookupQuestion(int chapter, int number) {
         QuizQuestion returnQuestion = null;
         
         List<String> questionData = db.query("select chapter, section, number, questiontext, "
                 +" multiplechoice from quizquestions where chapter = "
-                + chapter +" and section = " + section+" and number = " + number);
+                + chapter +" and number = " + number);
         
         if(questionData.size() > 0) {
             returnQuestion = new QuizQuestion(questionData.get(0));
             returnQuestion.setAnswers(db.query("select * from quizanswers where chapter = "+chapter+" and number = "+returnQuestion.getNumber()+" order by answer"));
+            returnQuestion.setUserStatus(answerStatus(chapter, returnQuestion.getNumber(), userBean.getUserName()));
+            returnQuestion.setUserLastAnswers(getLastAnswers(chapter, returnQuestion.getNumber(), userBean.getUserName()));
         }
         
         return returnQuestion;
@@ -146,7 +153,7 @@ public class QuizBean implements Serializable {
     public boolean checkAnswer(int chapter, int number, List<String> answers) {
         
         if(answers != null && answers.size() > 0) {
-            String answersCSV = String.join(", ", answers);
+            
 
             List<String> correctAnswers = db.query("select answer from quizanswers where chapter = "+chapter
                 +" and number = "+number+" and iscorrect = 1;");
@@ -169,13 +176,15 @@ public class QuizBean implements Serializable {
         
         boolean isCorrect = checkAnswer(chapter, number, answers);
         
+        String answersCSV = String.join(",", answers);
+        
         if(answerStatus(chapter, number, user.getUserName()) == QuizQuestion.UNANSWERED) {
-            db.update("insert into useranswers(username, chapter, number, correct)"
+            db.update("insert into useranswers(username, chapter, number, correct, lastanswers)"
                     +" values('"+user.getUserName()+"', "+chapter+", "+number+", "
-                    +(isCorrect? "1" : "0")+");");
+                    +(isCorrect? "1" : "0")+", '"+answersCSV+"');");
         }
         else {
-            db.update("update useranswers set correct = "+(isCorrect? "1" : "0")
+            db.update("update useranswers set correct = "+(isCorrect? "1" : "0")+", lastanswers = '"+answersCSV+"'"
                     +" where username = '"+user.getUserName()+"' and chapter = "+chapter+" and number = "+number+";");
         }
         
@@ -199,6 +208,20 @@ public class QuizBean implements Serializable {
         }
         
         return QuizQuestion.UNANSWERED;
+    }
+    
+    public List<String> getLastAnswers(Integer chapter, Integer number, String username) {
+        List<String> answers = db.query("select lastanswers from useranswers where username = '"
+            + username + "' and chapter = " + chapter + " and number = "+number+";");
+        
+        if(!answers.isEmpty() && !answers.get(0).isEmpty()) {
+            String[] splitted = answers.get(0).split(AccessDB.DELIMETER);
+            
+            if(splitted.length > 0)
+                return Arrays.asList(answers.get(0).split(AccessDB.DELIMETER)[0].split(","));
+        }
+        
+        return new ArrayList<>();
     }
     
 }

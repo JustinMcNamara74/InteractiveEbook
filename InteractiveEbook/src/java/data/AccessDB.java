@@ -42,7 +42,7 @@ public class AccessDB {
 
         List<String> returnList = new ArrayList<>();
         
-        System.out.println("SQL: "+st);
+        //System.out.println("SQL: "+st);
         
         try {
             PreparedStatement statement = conn.prepareStatement(st);
