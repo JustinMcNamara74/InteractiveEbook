@@ -18,10 +18,10 @@
                 <h:panelGroup rendered="#{!userBean.loggedIn}">
                     <h:form>
                         <h:panelGrid columns="2" cellpadding="5" cellspacing="5" width="400" style="margin: 0 auto;" title="Login">
-                            <h:outputText value="Username:" style="font-weight: bold;"/>
-                            <b:inputText value="#{userBean.userName}" required="true" requiredMessage="Username is required." />
+                            <h:outputText value="Username:"  style="font-weight: bold;"/>
+                            <b:inputText value="#{userBean.userName}" maxlength="55" required="true" requiredMessage="Username is required." />
                             <h:outputText value="Password:" style="font-weight: bold;"/>
-                            <h:inputSecret value="#{userBean.password}" required="true" requiredMessage="Password is required." class="form-control"/>
+                            <h:inputSecret value="#{userBean.password}" maxlength="55" required="true" requiredMessage="Password is required." class="form-control"/>
 
                             <h:outputText value="" />
                             <b:commandButton value="Login" action="#{loginBean.login}" style="margin-top:15px"/>

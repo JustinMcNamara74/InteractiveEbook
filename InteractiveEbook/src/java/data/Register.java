@@ -2,6 +2,7 @@ package data;
 
 import utils.ShaPWEncryption;
 import beans.UserBean;
+import java.util.List;
 import utils.Email;
 
 /*
@@ -15,9 +16,9 @@ public class Register {
         /**
          * Check if user exists, if not, add user's info to the User table.
          */
-        String s = db.query("select * from user where username = '" + user.getUserName() + "';");
-        if (s.equals("")) {
-            s = ShaPWEncryption.encrypt(user.getPassword());
+        List<String> s = db.query("select * from user where username = '" + user.getUserName() + "';");
+        if (s.isEmpty()) {
+            String password = ShaPWEncryption.encrypt(user.getPassword());
             db.update("insert into user values('" + user.getUserName()
                     + "', '" + s
                     + "', '" + user.getFirstName()

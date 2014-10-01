@@ -1,32 +1,29 @@
 package beans;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import data.AccessDB;
 import data.CheckAnswer;
-import data.Populate;
+import data.QuizQuestion;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-/**
- *
- * @author Slash
- */
-@ManagedBean
-@ApplicationScoped
-public class QuizBean {
+// Just made it SessionScoped because it solves all problems.
+@Named
+@SessionScoped
+public class QuizBean implements Serializable {
 
     AccessDB db = AccessDB.getInstance();
 
+    @Inject
+    private UserBean userBean;
+    
     private String answer;
-    private String problem;
-    private String user = "buttcheeks1";
     private List<String> answerList;
-
+    
     /**
      * Creates a new instance of QuizBean
      */
@@ -55,9 +52,9 @@ public class QuizBean {
         boolean rW = CheckAnswer.checkAnswer(s[0], s[1]);
         //r for 'right' and w for 'wrong'
         if (rW) {
-            CheckAnswer.setAnswer('r', user, s[0]);
+            CheckAnswer.setAnswer('r', userBean.getUserName(), s[0]);
         } else {
-            CheckAnswer.setAnswer('w', user, s[0]);
+            CheckAnswer.setAnswer('w', userBean.getUserName(), s[0]);
         }
     }
 
@@ -74,13 +71,60 @@ public class QuizBean {
             boolean rW = CheckAnswer.checkAnswer(s[0], sb.toString());
 
             if (rW) {
-                CheckAnswer.setAnswer('r', user, s[0]);
+                CheckAnswer.setAnswer('r', userBean.getUserName(), s[0]);
             } else {
-                CheckAnswer.setAnswer('w', user, s[0]);
+                CheckAnswer.setAnswer('w', userBean.getUserName(), s[0]);
             }
         }
     }
+    
+    public List<QuizQuestion> lookupQuestionsByChapter(int chapter) {
+        List<QuizQuestion> questionList = new ArrayList<>();
+        
+        List<String> questionData = db.query("select chapter, section, number, questiontext, "
+                +" multiplechoice from quizquestions where chapter = "
+                + chapter+" order by number");
+        
+        for(String qd : questionData) {
+            QuizQuestion qq = new QuizQuestion(qd);
+            qq.setAnswers(db.query("select * from quizanswers where chapter = "+chapter+" and number = "+qq.getNumber()+" order by answer"));
+            questionList.add(qq);
+        }
+        
+        return questionList;
+    }
 
+    public List<QuizQuestion> lookupQuestionsBySection(int chapter, int section) {
+        List<QuizQuestion> questionList = new ArrayList<>();
+        
+        List<String> questionData = db.query("select chapter, section, number, questiontext, "
+                +" multiplechoice from quizquestions where chapter = "
+                + chapter +" and section = " + section+" order by number");
+        
+        for(String qd : questionData) {
+            QuizQuestion qq = new QuizQuestion(qd);
+            qq.setAnswers(db.query("select * from quizanswers where chapter = "+chapter+" and number = "+qq.getNumber()+" order by answer"));
+            questionList.add(qq);
+        }
+        
+        return questionList;
+    }
+    
+    public QuizQuestion lookupQuestion(int chapter, int section, int number) {
+        QuizQuestion returnQuestion = null;
+        
+        List<String> questionData = db.query("select chapter, section, number, questiontext, "
+                +" multiplechoice from quizquestions where chapter = "
+                + chapter +" and section = " + section+" and number = " + number);
+        
+        if(questionData.size() > 0) {
+            returnQuestion = new QuizQuestion(questionData.get(0));
+            returnQuestion.setAnswers(db.query("select * from quizanswers where chapter = "+chapter+" and number = "+returnQuestion.getNumber()+" order by answer"));
+        }
+        
+        return returnQuestion;
+    }
+    
     /**
      * @return the answerList
      */
@@ -95,36 +139,66 @@ public class QuizBean {
         this.answerList = answerList;
     }
     
-    public boolean isRight(String id){
-       
-        String st = db.query("select rightwrong from answered where username = '"
-            + user + "' and problem = '" + id + "';");
-        
-        String stArr = st.substring(0,1);
-        
-        System.out.println(stArr);
-        return stArr.equals("r");
-        
+    public boolean checkAnswer(int chapter, int number, String answer) {
+        return checkAnswer(chapter, number, (List<String>)Collections.singleton(answer));
     }
     
-    public boolean isWrong(String id){
+    public boolean checkAnswer(int chapter, int number, List<String> answers) {
         
-        String st = db.query("select rightwrong from answered where username = '"
-            + user + "' and problem = '" + id + "';");
-        String stArr = st.substring(0,1);
-        
-        return stArr.equals("w");
-        
-    }
-    
-    public boolean isUnanswered(String id){
-              
-        String st = db.query("select rightwrong from answered where username = '"
-            + user + "' and problem = '" + id + "';");
-        
-        String stArr = st.substring(0,1);
-        return stArr.equals("u");
-        
-    }
+        if(answers != null && answers.size() > 0) {
+            String answersCSV = String.join(", ", answers);
 
+            List<String> correctAnswers = db.query("select answer from quizanswers where chapter = "+chapter
+                +" and number = "+number+" and iscorrect = 1;");
+
+            if (correctAnswers.size() == answers.size()) {
+                for(int i=0; i < correctAnswers.size(); i++) {
+                    if(!answers.contains(correctAnswers.get(i).split(AccessDB.DELIMETER)[0])) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    public boolean submitAnswer(int chapter, int number, List<String> answers, UserBean user) {
+        
+        boolean isCorrect = checkAnswer(chapter, number, answers);
+        
+        if(answerStatus(chapter, number, user.getUserName()) == QuizQuestion.UNANSWERED) {
+            db.update("insert into useranswers(username, chapter, number, correct)"
+                    +" values('"+user.getUserName()+"', "+chapter+", "+number+", "
+                    +(isCorrect? "1" : "0")+");");
+        }
+        else {
+            db.update("update useranswers set correct = "+(isCorrect? "1" : "0")
+                    +" where username = '"+user.getUserName()+"' and chapter = "+chapter+" and number = "+number+";");
+        }
+        
+        return isCorrect;
+    }
+    
+    public int answerStatus(Integer chapter, Integer number, String username) {
+        
+        List<String> answers = db.query("select correct from useranswers where username = '"
+            + username + "' and chapter = " + chapter + " and number = "+number+";");
+        
+        if(!answers.isEmpty()) {
+            String isCorrect = answers.get(0).split(AccessDB.DELIMETER)[0];
+            
+            switch (isCorrect) {
+                case "1":
+                    return QuizQuestion.CORRECT;
+                default:
+                    return QuizQuestion.INCORRECT;
+            }
+        }
+        
+        return QuizQuestion.UNANSWERED;
+    }
+    
 }

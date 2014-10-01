@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <body>
+        <ui:composition>
+        <c:set var="questions" scope="session" value="#{quizBean.lookupQuestionsBySection(5, 2)}"/>
+        
+        <p class="quizHeading">Quiz Time!</p>
+        <p>Click the buttons below to answer the quiz questions. Your progress will be tracked.</p>
+        <b:buttonToolbar>
+            <ui:repeat value="#{questions}" var="quizQuestion">
+               
+                <b:buttonGroup>
+                    <button id="btrigger1" class="btn btn-warning" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">#{quizQuestion.chapter}-#{quizQuestion.number}</button>
+                    
+                    <c:choose>
+                        <c:when test="#{questionStatus == QuizQuestion.INCORRECT}">
+                            <button id="btrigger2" class="btn btn-danger" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Incorrect :(</button>
+                        </c:when>
+                        <c:when test="#{questionStatus == QuizQuestion.CORRECT}">
+                            <button id="btrigger2" class="btn btn-success" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Correct! :)</button>
+                        </c:when>
+                        <c:otherwise>
+                            <button id="btrigger2" class="btn btn-primary" data-toggle="modal" data-target="#quizModal" onclick="loadQuizQuestion(#{quizQuestion.chapter}, #{quizQuestion.number});">Needs answer</button>
+                        </c:otherwise>
+                    </c:choose>
+                
+                </b:buttonGroup>
+            </ui:repeat>
+        </b:buttonToolbar>
+            
+            
+        </ui:composition>
+    </body>
+</html>
+

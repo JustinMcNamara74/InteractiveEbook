@@ -9,12 +9,79 @@
         <title>WheeReader - 4J Interactive</title>
         
         <link rel="stylesheet" type="text/css" href="css/chaptertext.css" />
+        <script language="javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
     </h:head>
     <h:body style="padding-top: 60px;">
         <ui:insert name="header" >
             <ui:include src="/template/navbar.xhtml" />
 	</ui:insert>
         
+    
+            <b:modal id="quizModal" title="Quiz Question">
+
+                <div id="quizText">
+                    <div id="quizLoadAnim"><img src="images/ajax-loader.gif"/></div>
+                </div>
+
+                <div class="container-fluid">
+                    <form class="form-horizontal" role="form">
+                        <div id="quizAnswers" class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"/>
+                                    Option one is this and that&mdash;be sure to include why it's great
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                                    Option two can be something else and selecting it will deselect option one
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <f:facet name="footer">
+                    <b:button id="quizCancelButton" value="Cancel" dismiss="modal" onclick="return false;"/>
+                    <b:button id="quizSubmitButton" value="Submit Answer" look="primary" dismiss="modal" onclick="return false;"/>
+                </f:facet>
+            </b:modal>
+        
+        
+        <script language="javascript">
+            var questionCache = {};
+            
+            var animateLoaderGuy = function() {
+                $("#quizLoadAnim").removeAttr("style");
+                $("#quizLoadAnim").offset({
+                    left: $("#quizText").offset().left,
+                    top: $("#quizText").offset().top
+                });
+
+                $("#quizLoadAnim").animate({
+                    left: "+=550"
+                }, 4000 , animateLoaderGuy);
+            };
+            
+            var loadQuizQuestion = function(chapter, number) {
+                var qID = chapter+"."+number;
+                
+                if(!questionCache[qID]) {
+                    $("#quizSubmitButton").addClass("disabled");
+                    
+                    $("#quizAnswers").hide();
+                    $("#quizLoadAnim").show();
+                    
+                    $("#quizModal_Label").text("Quiz Question Loading...");
+                
+                    $("#quizLoadAnim").stop();
+                    animateLoaderGuy();
+                }
+            };
+        </script>
+        
+
         <table width="100%" height="100%">
             <tr height="100%">
                 <td width="25%">

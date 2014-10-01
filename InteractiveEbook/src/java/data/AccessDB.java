@@ -5,12 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccessDB {
 
     private Connection conn;
     private static AccessDB instance;
-
+    public static final String DELIMETER = "#!BOOYAH!#";
+    
     private AccessDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -19,6 +22,7 @@ public class AccessDB {
         }
 
         try {
+            // DO NOT EDIT THE FOLLOW 2 LINES (JACOB)
             conn = DriverManager.getConnection("jdbc:mysql://jayjayjayjay.ddns.net/ebook"
                     + "?user=jjjj&password=JjJj1234!@#$");
         } catch (SQLException se) {
@@ -34,23 +38,30 @@ public class AccessDB {
         return instance;
     }
 
-    public String query(String st) {
+    public List<String> query(String st) {
 
-        StringBuilder returnString = new StringBuilder();
+        List<String> returnList = new ArrayList<>();
+        
+        System.out.println("SQL: "+st);
+        
         try {
             PreparedStatement statement = conn.prepareStatement(st);
             ResultSet rs = statement.executeQuery();
             if (rs == null) {
-                return "";
+                return returnList;
             }
             int columnCount = rs.getMetaData().getColumnCount();
+            
+            
             while (rs.next()) {
+                StringBuilder rowString = new StringBuilder();
+                
                 for (int i = 1; i <= columnCount; i++) {
-                    returnString.append(rs.getString(i));
-                    returnString.append(" ");
+                    rowString.append(rs.getString(i));
+                    rowString.append(DELIMETER);
                 }
                 //separates records
-                returnString.append("#!");
+                returnList.add(rowString.toString());
             }
             //stuff
             rs.close();
@@ -58,20 +69,20 @@ public class AccessDB {
         } catch (SQLException se) {
             System.err.println("Error querying database: " + se.getMessage());
         }
-        return returnString.toString();
+        return returnList;
     }
 
     public boolean isValidCode(String code) {
         AccessDB db = AccessDB.getInstance();
-        String s = db.query("select code "
+        List<String> s = db.query("select code "
                 + "from AccessCodes "
                 + "where code = " + code
                 + ";");
         
         System.out.println(s);
-            return !s.equals("");
+        return !s.isEmpty();
 
-        }
+    }
 
 
     public void update(String st) {
