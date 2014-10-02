@@ -4,22 +4,20 @@ import data.AccessDB;
 import data.Register;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import utils.Email;
 
 /**
  *
  * @author James
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class RegisterBean implements Serializable {
 
     @Inject
@@ -61,8 +59,8 @@ public class RegisterBean implements Serializable {
                 
             }
             else{
-                //response = "Invalid AccessCode" + userBean.getAccessCode();
-                response = ""+AccessDB.getInstance().isValidCode(userBean.getAccessCode());
+                response = "Invalid Access Code.";
+                //response = ""+AccessDB.getInstance().isValidCode(userBean.getAccessCode());
 
             }
             

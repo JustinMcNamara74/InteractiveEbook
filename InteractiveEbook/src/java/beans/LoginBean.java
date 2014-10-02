@@ -10,7 +10,7 @@ import data.Login;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ import javax.inject.Named;
  * @author James
  */
 @Named
-@ViewScoped
+@RequestScoped
 public class LoginBean implements Serializable {
 
     @Inject

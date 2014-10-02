@@ -43,26 +43,26 @@
 
                             <h:outputText value="Access Code:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.accessCode}" maxlength="45" required="true" requiredMessage="Access Code is required."
-                                         validatorMessage="Invalid Access Code Length">                     
+                                         validatorMessage="Invalid Access Code">                     
                                 <f:validateRegex pattern="(?=.*\d).{1,20}"/>
                             </b:inputText>
 
                             <h:outputText value="First Name:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.firstName}" maxlength="45" required="true" requiredMessage="First name is required."
-                                         validatorMessage="First Name must be between 3 and 20 characters long">
-                                <f:validateRegex pattern="[a-zA-Z]{3,20}"/>
+                                         validatorMessage="First Name must be between 1 and 20 characters long">
+                                <f:validateRegex pattern="[a-zA-Z]{1,20}"/>
                             </b:inputText>
 
                             <h:outputText value="Middle Initial:"/>
                             <b:inputText value="#{userBean.middle}" maxlength="1" style="width: 40px"
-                                         validatorMessage="Middle Initial Too Long">
+                                         validatorMessage="Middle Initial Invalid.">
                                <f:validateRegex pattern="[a-zA-Z]{0,1}"/>
                             </b:inputText>
 
                             <h:outputText value="Last Name:"  style="font-weight: bold;" />
                             <b:inputText value="#{userBean.lastName}" required="true" maxlength="45" requiredMessage="Last name is required."
-                                         validatorMessage="First Name must be between 3 and 20 characters long">
-                                <f:validateRegex pattern="[a-zA-Z]{3,20}"/>
+                                         validatorMessage="Last Name must be between 1 and 20 characters long">
+                                <f:validateRegex pattern="[a-zA-Z]{1,20}"/>
 
                             </b:inputText>
 

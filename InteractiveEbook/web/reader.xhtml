@@ -21,9 +21,10 @@
             <b:modal id="quizModal" title="Quiz Question">
 
                 <div id="quizText">
-                    <div id="quizLoadAnim"><img src="images/ajax-loader.gif"/></div>
+                    
                 </div>
-
+                <div id="quizLoadAnim"><img src="images/ajax-loader.gif"/></div>
+                
                 <div class="container-fluid">
                     <form class="form-horizontal" role="form" id="quizForm">
                         <div id="quizAnswers" class="form-group">
@@ -148,10 +149,11 @@
             
             var setQuizFields = function(quizData) {
                 $( "#quizText" ).html( quizData.questionText );
+                $( "#quizText" ).show();
                 
                 $("#quizLoadAnim").stop();
                 $("#quizLoadAnim").hide();
-
+                
                 $("#quizAnswers").html("");
                 $("#quizAnswers").show();
 
@@ -183,6 +185,8 @@
                 $("#quizModal").css({
                     "background-color" : "rgba(0, 0, 0, 0)"
                 });
+                
+                $( "#quizText" ).hide();
                 
                 if(!questionCache[qID]) {
                     
