@@ -20,7 +20,7 @@ public class Register {
         if (s.isEmpty()) {
             String password = ShaPWEncryption.encrypt(user.getPassword());
             db.update("insert into user values('" + user.getUserName()
-                    + "', '" + s
+                    + "', '" + password
                     + "', '" + user.getFirstName()
                     + "', '" + user.getLastName()
                     + "', '" + user.getMiddle()
