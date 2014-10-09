@@ -82,6 +82,12 @@ and open the template in the editor.
         font-size: 2em;
         color: #0185AD;
     }
+    
+    .exerciseHeading {
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #245990;
+    }
 
     /* Boxes */
     .noteNOTE {
@@ -116,6 +122,12 @@ and open the template in the editor.
         background-color: #E9D392;
         padding: 10px;
     }
+    
+    .outputHeading {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #245990;
+    }
 
     .outputBox {
         border: 1px solid #333333;
@@ -141,6 +153,12 @@ and open the template in the editor.
 
     .traceBoxIterationBracket {
         font-size: 2.5em;       
+    }
+    
+    .questionNumber {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #245990;
     }
 
 
