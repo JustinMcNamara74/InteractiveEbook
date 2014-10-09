@@ -84,7 +84,7 @@ public class AccessDB {
                 "  `username` varchar(20) NOT NULL,\n" +
                 "  `chapter` int(11) NOT NULL,\n" +
                 "  `number` int(11) NOT NULL,\n" +
-                "  `correct` tinyint(1) DEFAULT '-1',\n" +
+                "  `correct` tinyint(1) DEFAULT '0',\n" +
                 "  `lastanswers` varchar(20) DEFAULT '',\n" +
                 "  PRIMARY KEY (`chapter`,`number`,`username`)\n" +
                 ");");
