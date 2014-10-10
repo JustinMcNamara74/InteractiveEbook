@@ -205,7 +205,7 @@ public class UserBean implements Serializable {
     private String originalURL;
     
     public void recordOriginalURL(String originalURL) {
-        if(!originalURL.contains("login.xhtml") && !originalURL.contains("register.xhtml")) {
+        if(originalURL.contains("reader.xhtml") || originalURL.contains("index.xhtml")) {
             this.originalURL = originalURL;
         }
     }

@@ -1176,38 +1176,6 @@ The sum is 14
                 </div>
             </div>
 
-            <script language="javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script language="javascript">
-                $(document).ready(function () {
-
-                    var notSubmitted = "The exercise has not been submitted";
-                    var correct = "?";
-                    var incorrect = "?!";
-
-
-                    var request = $.get("http://liang.armstrong.edu:8080/selftest/GetExerciseStatus?username=#{userBean.userName}&amp;exerciseNumber=5_1")
-                            .success(
-                            function (data) {
-                                $("#form\\:buttpoop").text(data);
-                                if (data === notSubmitted) {
-                                    $("#form\\:correctness").attr("src", "chapters/ex.png");
-                                }
-                                else if (data === correct) {
-                                    $("#form\\:correctness").attr("src", "chapters/check.png");
-                                }
-                                else if (data === incorrect) {
-                                    $("#form\\:correctness").attr("src", "chapters/check.png");
-                                }
-                                else {
-                                    $("#form\\:correctness").attr("src", "chapters/check.png");
-                                }
-                            }).error
-                            (function(jqXHR, textStatus, errorThrown) { 
-                            $("#form\\:buttpoop").text("data");});
-
-                });
-            </script>
-
             <h:form id="form">
                 <h:panelGrid columns="2" id="grid">
                     <h:graphicImage id="correctness" value="chapters/blank.png"/>

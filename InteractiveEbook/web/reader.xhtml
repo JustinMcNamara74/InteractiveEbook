@@ -16,7 +16,6 @@
         <ui:insert name="header" >
             <ui:include src="/template/navbar.xhtml" />
 	</ui:insert>
-        
     
             <b:modal id="quizModal" title="Quiz Question">
 
@@ -231,6 +230,12 @@
                                         <ui:repeat value="#{chapter.subsections}" var="subsection">
                                             <li>
                                                 <a href="##{chapter.number}-#{subsection.number}">#{chapter.number}.#{subsection.number} - #{subsection.title}</a>
+                                            </li>
+                                        </ui:repeat>
+                                        <b:navLink header="Programming Exercises"/>
+                                        <ui:repeat value="#{chapter.exercises}" var="exercise" varStatus="exStatus">
+                                            <li>
+                                                <a href="#exercise#{chapter.number}-#{(exStatus.index+1)}">#{exercise}</a>
                                             </li>
                                         </ui:repeat>
                                         <b:navLink></b:navLink>

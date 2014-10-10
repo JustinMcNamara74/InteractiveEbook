@@ -90,6 +90,9 @@ public class ReaderBean {
         chapter5.addSubsection(10, "Case Study: Checking Palindromes");
         chapter5.addSubsection(11, "Case Study: Displaying Prime Numbers");
         
+        chapter5.addExercise("Exercise 5.1");
+        chapter5.addExercise("Exercise 5.2");
+        
         return chapters;
     }
     
@@ -110,6 +113,8 @@ public class ReaderBean {
         private int number;
         private String title;
         private List<Chapter> subsections = new ArrayList<>();
+        private List<String> exercises = new ArrayList<>();
+        
         private String sourceUrl;
         
         public Chapter(int number, String title) {
@@ -151,6 +156,18 @@ public class ReaderBean {
          */
         public void setSourceUrl(String sourceUrl) {
             this.sourceUrl = sourceUrl;
+        }
+        
+        public void addExercise(String exerciseName) {
+            getExercises().add(exerciseName);
+        }
+
+        public List<String> getExercises() {
+            return exercises;
+        }
+
+        public void setExercises(List<String> exercises) {
+            this.exercises = exercises;
         }
         
         

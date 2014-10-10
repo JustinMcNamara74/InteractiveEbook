@@ -42,6 +42,10 @@ public class ForgotPasswordBean {
                     + "It is recommended that you change your password after logging in with this one.");
 
         }
+        else {
+            email = null;
+            response = "That email address is not registered with our service.";
+        }
         
         return "forgotpassword";
     }
